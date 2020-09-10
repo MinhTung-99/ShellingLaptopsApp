@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val repository = LaptopRepository(LaptopApi())
         GlobalScope.launch (Dispatchers.Main) {
             val laptop = repository.getLaptops()
-            Toast.makeText(this@MainActivity, laptop.informationLaptop!![0].brand!!.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, laptop.informationLaptop!![0].name!!.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
