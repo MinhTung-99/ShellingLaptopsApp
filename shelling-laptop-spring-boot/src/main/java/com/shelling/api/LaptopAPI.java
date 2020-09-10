@@ -28,19 +28,19 @@ public class LaptopAPI {
 	    return result;
 	}
 	
-	@PostMapping(value = "/laptop")
-	public LaptopDTO createLaptop(@RequestBody LaptopDTO laptopDTO) {
-		return laptopService.save(laptopDTO);
-	}
-	
-	@PutMapping(value = "/laptop/{id}")
-	public LaptopDTO updateLaptop(@RequestBody LaptopDTO laptopDTO, @PathVariable("id") long id) {
-		laptopDTO.setId(id);
-	    return laptopService.update(laptopDTO);
-	}
-	
-	@DeleteMapping(value = "/laptop")
-	public void deleteLaptop(@RequestBody long[] ids) {
-		laptopService.delete(ids);
-	}
+//	@PostMapping(value = "/laptop")
+//	public LaptopDTO createLaptop(@RequestBody LaptopDTO laptopDTO) {
+//		return laptopService.save(laptopDTO);
+//	}
+//	
+//	@PutMapping(value = "/laptop/{id}")
+//	public LaptopDTO updateLaptop(@RequestBody LaptopDTO laptopDTO, @PathVariable("id") long id) {
+//		laptopDTO.setId(id);
+//	    return laptopService.update(laptopDTO);
+//	}
+//	
+//	@DeleteMapping(value = "/laptop")
+//	public void deleteLaptop(@RequestBody long[] ids) {
+//		laptopService.delete(ids);
+//	}
 }
