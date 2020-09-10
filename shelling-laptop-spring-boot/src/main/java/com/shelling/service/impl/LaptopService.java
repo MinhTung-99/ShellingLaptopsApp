@@ -21,32 +21,32 @@ public class LaptopService implements ILaptopService{
 	@Autowired
 	private LaptopConverter laptopConverter;
 	
-	@Override
-	public LaptopDTO save(LaptopDTO laptopDTO) {
-		LaptopEntity laptopEntity = new LaptopEntity();
-		laptopEntity = laptopConverter.toEntity(laptopDTO);	
-		
-		laptopEntity = laptopRepository.save(laptopEntity);
-		
-		return laptopConverter.toDTO(laptopEntity);
-	}
-
-	@Override
-	public LaptopDTO update(LaptopDTO laptopDTO) {
-		LaptopEntity oldLaptopEntity = laptopRepository.findOne(laptopDTO.getId());
-		LaptopEntity newLaptopEntity = laptopConverter.toEntity(laptopDTO, oldLaptopEntity);
-	
-		newLaptopEntity = laptopRepository.save(newLaptopEntity);
-		
-		return laptopConverter.toDTO(newLaptopEntity);
-	}
-
-	@Override
-	public void delete(long[] ids) {
-		for(long items : ids) {
-			laptopRepository.delete(items);
-		}
-	}
+//	@Override
+//	public LaptopDTO save(LaptopDTO laptopDTO) {
+//		LaptopEntity laptopEntity = new LaptopEntity();
+//		laptopEntity = laptopConverter.toEntity(laptopDTO);	
+//		
+//		laptopEntity = laptopRepository.save(laptopEntity);
+//		
+//		return laptopConverter.toDTO(laptopEntity);
+//	}
+//
+//	@Override
+//	public LaptopDTO update(LaptopDTO laptopDTO) {
+//		LaptopEntity oldLaptopEntity = laptopRepository.findOne(laptopDTO.getId());
+//		LaptopEntity newLaptopEntity = laptopConverter.toEntity(laptopDTO, oldLaptopEntity);
+//	
+//		newLaptopEntity = laptopRepository.save(newLaptopEntity);
+//		
+//		return laptopConverter.toDTO(newLaptopEntity);
+//	}
+//
+//	@Override
+//	public void delete(long[] ids) {
+//		for(long items : ids) {
+//			laptopRepository.delete(items);
+//		}
+//	}
 
 	@Override
 	public List<LaptopDTO> findAll() {

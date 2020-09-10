@@ -28,6 +28,7 @@ public class LaptopAPI {
 	    return result;
 	}
 	
+	
 //	@PostMapping(value = "/laptop")
 //	public LaptopDTO createLaptop(@RequestBody LaptopDTO laptopDTO) {
 //		return laptopService.save(laptopDTO);

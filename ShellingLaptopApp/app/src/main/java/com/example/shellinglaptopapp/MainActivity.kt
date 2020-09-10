@@ -14,11 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //get retrofit
-        val repository = LaptopRepository(LaptopApi())
-        GlobalScope.launch (Dispatchers.Main) {
-            val laptop = repository.getLaptops()
-            Toast.makeText(this@MainActivity, laptop.informationLaptop!![0].name!!.toString(), Toast.LENGTH_SHORT).show()
-        }
+
     }
 }

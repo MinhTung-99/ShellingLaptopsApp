@@ -52,7 +52,10 @@ public class LaptopEntity {
 	private String pin;
 	
 	@Column
-	private double price;
+	private long price;
+	
+	@Column
+	private String priceStr;
 	
 	public long getId() {
 		return id;
@@ -132,10 +135,16 @@ public class LaptopEntity {
 	public void setPin(String pin) {
 		this.pin = pin;
 	}
-	public double getPrice() {
+	public long getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(long price) {
 		this.price = price;
+	}
+	public String getPriceStr() {
+		return priceStr;
+	}
+	public void setPriceStr(String priceStr) {
+		this.priceStr = priceStr;
 	}
 }

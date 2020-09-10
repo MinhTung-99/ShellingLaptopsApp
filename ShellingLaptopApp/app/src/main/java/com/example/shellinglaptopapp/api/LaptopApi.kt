@@ -17,7 +17,7 @@ interface LaptopApi {
         operator fun invoke(): LaptopApi{
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://shellingtest.herokuapp.com/")
+                .baseUrl("https://shellinglaptop.herokuapp.com/")
                 .build()
                 .create(LaptopApi::class.java)
         }

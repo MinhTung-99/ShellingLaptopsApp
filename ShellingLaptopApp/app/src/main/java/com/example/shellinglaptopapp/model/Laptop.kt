@@ -59,5 +59,9 @@ class Laptop(brand: String)
 
     @SerializedName("price")
     @Expose
-    var price: Double? = null
+    var price: Long? = null
+
+    @SerializedName("priceStr")
+    @Expose
+    var priceStr: String? = null
 }
