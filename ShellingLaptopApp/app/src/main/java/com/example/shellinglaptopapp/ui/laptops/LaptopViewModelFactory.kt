@@ -1,8 +1,8 @@
-package com.example.shellinglaptopapp.viewmodel
+package com.example.shellinglaptopapp.ui.laptops
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.shellinglaptopapp.api.LaptopRepository
+import com.example.shellinglaptopapp.data.repository.LaptopRepository
 
 @Suppress("UNCHECKED_CAST")
 class LaptopViewModelFactory(

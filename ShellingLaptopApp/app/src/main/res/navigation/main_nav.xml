@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/laptopFragment"
-        android:name="com.example.shellinglaptopapp.fragment.LaptopFragment"
+        android:name="com.example.shellinglaptopapp.ui.laptops.LaptopFragment"
         android:label="LaptopFragment" />
 </navigation>

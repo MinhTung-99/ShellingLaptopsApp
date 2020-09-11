@@ -1,4 +1,4 @@
-package com.example.shellinglaptopapp.model
+package com.example.shellinglaptopapp.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -21,9 +21,9 @@ class Laptop(brand: String)
     @Expose
     var cpu: String? = null
 
-    @SerializedName("cardGraphics")
+    @SerializedName("cardGraphic")
     @Expose
-    var cardGraphics: String? = null
+    var cardGraphic: String? = null
 
     @SerializedName("hardDrive")
     @Expose

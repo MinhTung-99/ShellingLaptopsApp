@@ -1,8 +1,6 @@
-package com.example.shellinglaptopapp.api
+package com.example.shellinglaptopapp.data.network
 
-import com.example.shellinglaptopapp.model.Laptop
-import com.example.shellinglaptopapp.model.MyArray
-import com.google.gson.GsonBuilder
+import com.example.shellinglaptopapp.data.model.MyArray
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,7 +12,7 @@ interface LaptopApi {
     suspend fun getLaptops(): Response<MyArray>
 
     companion object {
-        operator fun invoke(): LaptopApi{
+        operator fun invoke(): LaptopApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://shellinglaptop.herokuapp.com/")

@@ -1,4 +1,6 @@
-package com.example.shellinglaptopapp.api
+package com.example.shellinglaptopapp.data.repository
+
+import com.example.shellinglaptopapp.data.network.LaptopApi
 
 class LaptopRepository(
     private val api: LaptopApi

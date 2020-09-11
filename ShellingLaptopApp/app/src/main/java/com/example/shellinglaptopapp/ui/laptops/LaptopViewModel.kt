@@ -1,18 +1,17 @@
-package com.example.shellinglaptopapp.viewmodel
+package com.example.shellinglaptopapp.ui.laptops
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.shellinglaptopapp.api.LaptopRepository
-import com.example.shellinglaptopapp.coroutine.Coroutines
-import com.example.shellinglaptopapp.model.Laptop
-import com.example.shellinglaptopapp.model.MyArray
+import com.example.shellinglaptopapp.data.model.Laptop
+import com.example.shellinglaptopapp.data.repository.LaptopRepository
+import com.example.shellinglaptopapp.util.Coroutines
+import com.example.shellinglaptopapp.data.model.MyArray
 import kotlinx.coroutines.Job
 
 class LaptopViewModel(
     private val repository: LaptopRepository
 ): ViewModel() {
-
     //coroutine
     private lateinit var job: Job
 

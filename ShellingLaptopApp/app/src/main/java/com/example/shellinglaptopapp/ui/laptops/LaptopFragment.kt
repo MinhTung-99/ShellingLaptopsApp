@@ -1,26 +1,22 @@
-package com.example.shellinglaptopapp.fragment
+package com.example.shellinglaptopapp.ui.laptops
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shellinglaptopapp.R
-import com.example.shellinglaptopapp.adapter.LaptopAdapter
-import com.example.shellinglaptopapp.api.LaptopApi
-import com.example.shellinglaptopapp.api.LaptopRepository
-import com.example.shellinglaptopapp.viewmodel.LaptopViewModel
-import com.example.shellinglaptopapp.viewmodel.LaptopViewModelFactory
+import com.example.shellinglaptopapp.data.model.Laptop
+import com.example.shellinglaptopapp.data.network.LaptopApi
+import com.example.shellinglaptopapp.data.repository.LaptopRepository
 import kotlinx.android.synthetic.main.fragment_laptop.*
 
-class LaptopFragment: Fragment() {
+class LaptopFragment: Fragment(), RecyclerViewClickListener {
 
     private lateinit var factory: LaptopViewModelFactory
     private lateinit var viewModel: LaptopViewModel
@@ -43,7 +39,19 @@ class LaptopFragment: Fragment() {
         viewModel.getLaptops()
         viewModel.laptops.observe(viewLifecycleOwner, Observer {
             rv_laptop.layoutManager = GridLayoutManager(context, 2)
-            rv_laptop.adapter = LaptopAdapter(it.informationLaptop!!)
+            rv_laptop.adapter = LaptopAdapter(it.informationLaptop!!, this)
         })
+    }
+
+    override fun onRecyclerViewItemClick(laptop: Laptop) {
+
+        val viewModel = ViewModelProvider(requireActivity()).get(ShareLaptopViewModel::class.java)
+        viewModel.laptop.value = laptop
+
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        val detailLaptopsFragment = DetailLaptopsFragment()
+        fragmentTransaction.replace(R.id.fragment, detailLaptopsFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
