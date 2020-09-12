@@ -15,7 +15,6 @@ public class LaptopDTO {
 	private String os;
 	private String pin;
 	private long price;
-	private String priceStr;
 	
 	public long getId() {
 		return id;
@@ -100,11 +99,5 @@ public class LaptopDTO {
 	}
 	public void setPrice(long price) {
 		this.price = price;
-	}
-	public String getPriceStr() {
-		return priceStr;
-	}
-	public void setPriceStr(String priceStr) {
-		this.priceStr = priceStr;
 	}
 }

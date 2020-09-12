@@ -25,7 +25,6 @@ public class LaptopConverter {
 		entity.setOs(dto.getOs());
 		entity.setPin(dto.getPin());
 		entity.setPrice(dto.getPrice());
-		entity.setPriceStr(dto.getPriceStr());
 		
 		return entity;
 	}
@@ -48,7 +47,6 @@ public class LaptopConverter {
 		dto.setOs(entity.getOs());
 		dto.setPin(entity.getPin());
 		dto.setPrice(entity.getPrice());
-		dto.setPriceStr(entity.getPriceStr());
 		
 		return dto;	
 	}
@@ -69,7 +67,6 @@ public class LaptopConverter {
 		entity.setOs(dto.getOs());
 		entity.setPin(dto.getPin());
 		entity.setPrice(dto.getPrice());
-		entity.setPriceStr(dto.getPriceStr());
 		
 		return entity;
 	}

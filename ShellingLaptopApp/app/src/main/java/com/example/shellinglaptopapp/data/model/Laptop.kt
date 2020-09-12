@@ -1,17 +1,21 @@
 package com.example.shellinglaptopapp.data.model
 
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Laptop(brand: String)
+open class Laptop
 {
     @SerializedName("id")
     @Expose
+    @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 
     @SerializedName("brand")
     @Expose
-    var brand: String? = brand
+    @ColumnInfo(name = "brand")
+    var brand: String? = null
 
     @SerializedName("name")
     @Expose
@@ -61,7 +65,5 @@ class Laptop(brand: String)
     @Expose
     var price: Long? = null
 
-    @SerializedName("priceStr")
-    @Expose
     var priceStr: String? = null
 }

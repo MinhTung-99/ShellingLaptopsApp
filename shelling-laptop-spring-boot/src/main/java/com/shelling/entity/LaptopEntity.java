@@ -54,9 +54,6 @@ public class LaptopEntity {
 	@Column
 	private long price;
 	
-	@Column
-	private String priceStr;
-	
 	public long getId() {
 		return id;
 	}
@@ -140,11 +137,5 @@ public class LaptopEntity {
 	}
 	public void setPrice(long price) {
 		this.price = price;
-	}
-	public String getPriceStr() {
-		return priceStr;
-	}
-	public void setPriceStr(String priceStr) {
-		this.priceStr = priceStr;
 	}
 }

@@ -1,11 +1,9 @@
 package com.example.shellinglaptopapp.ui.laptops
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +12,9 @@ import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.data.model.Laptop
 import com.example.shellinglaptopapp.data.network.LaptopApi
 import com.example.shellinglaptopapp.data.repository.LaptopRepository
+import com.example.shellinglaptopapp.ui.MainActivity
+import com.example.shellinglaptopapp.ui.laptops.detail.DetailLaptopsFragment
+import com.example.shellinglaptopapp.ui.laptops.share.ShareLaptopViewModel
 import kotlinx.android.synthetic.main.fragment_laptop.*
 
 class LaptopFragment: Fragment(), RecyclerViewClickListener {
@@ -32,6 +33,8 @@ class LaptopFragment: Fragment(), RecyclerViewClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        (activity as MainActivity).setVisibleToolBar(true)
+
         val api = LaptopApi()
         val repository = LaptopRepository(api)
         factory = LaptopViewModelFactory(repository)
@@ -48,7 +51,7 @@ class LaptopFragment: Fragment(), RecyclerViewClickListener {
         val viewModel = ViewModelProvider(requireActivity()).get(ShareLaptopViewModel::class.java)
         viewModel.laptop.value = laptop
 
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        val fragmentTransaction = activity!!.supportFragmentManager?.beginTransaction()
         val detailLaptopsFragment = DetailLaptopsFragment()
         fragmentTransaction.replace(R.id.fragment, detailLaptopsFragment)
         fragmentTransaction.addToBackStack(null)
