@@ -14,10 +14,10 @@ import com.example.shellinglaptopapp.data.network.LaptopApi
 import com.example.shellinglaptopapp.data.repository.LaptopRepository
 import com.example.shellinglaptopapp.ui.MainActivity
 import com.example.shellinglaptopapp.ui.laptops.detail.DetailLaptopsFragment
-import com.example.shellinglaptopapp.ui.laptops.share.ShareLaptopViewModel
+import com.example.shellinglaptopapp.ui.share.ShareLaptopViewModel
 import kotlinx.android.synthetic.main.fragment_laptop.*
 
-class LaptopFragment: Fragment(), RecyclerViewClickListener {
+class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
 
     private lateinit var factory: LaptopViewModelFactory
     private lateinit var viewModel: LaptopViewModel

@@ -12,4 +12,8 @@ class CartRepository(
     suspend fun insertCart(cart: Cart){
         cartDao.insert(cart)
     }
+
+    suspend fun deleteCart(cart: Cart){
+        cartDao.delete(cart)
+    }
 }

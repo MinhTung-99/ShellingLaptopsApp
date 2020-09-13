@@ -375,7 +375,7 @@
                 android:layout_marginLeft="156dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/custom_button_add_my_cart"
+                android:background="@drawable/custom_button"
                 android:onClick="@{detail :: btnAddCartOnClick}"/>
 
         </LinearLayout>

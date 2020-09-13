@@ -1,4 +1,4 @@
-package com.example.shellinglaptopapp.ui.laptops.share
+package com.example.shellinglaptopapp.ui.share
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import com.example.shellinglaptopapp.R
-import com.example.shellinglaptopapp.ui.mycart.CartFragment
+import com.example.shellinglaptopapp.ui.cart.CartFragment
 
 
 class MainViewModel: ViewModel() {

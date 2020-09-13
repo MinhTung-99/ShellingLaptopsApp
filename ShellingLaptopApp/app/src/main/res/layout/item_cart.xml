@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:background="#dcdcdc"
+        android:paddingVertical="10dp">
 
         <ImageView
             android:layout_width="150dp"
@@ -112,6 +113,29 @@
                     android:text="@{cart.totalMoneyStr}"
                     android:textSize="17sp"
                     android:textColor="#ff0000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btn_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đặt hàng"
+                    android:background="@drawable/custom_button" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xoá"
+                    android:background="@drawable/custom_button"
+                    android:layout_marginLeft="20dp"/>
 
             </LinearLayout>
 

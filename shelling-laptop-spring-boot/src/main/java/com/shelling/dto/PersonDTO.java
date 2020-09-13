@@ -5,6 +5,7 @@ public class PersonDTO {
 	private String fullName;
 	private String phoneNumber;
 	private String email;
+	private String address;
 	
 	public long getId() {
 		return id;
@@ -29,5 +30,11 @@ public class PersonDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

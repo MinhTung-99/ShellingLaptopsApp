@@ -1,4 +1,4 @@
-package com.example.shellinglaptopapp.ui.mycart
+package com.example.shellinglaptopapp.ui.cart
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -24,6 +24,12 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
     fun insertCart(cart: Cart){
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertCart(cart)
+        }
+    }
+
+    fun deleteCart(cart: Cart){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteCart(cart)
         }
     }
 }

@@ -1,6 +1,5 @@
-package com.example.shellinglaptopapp.ui.mycart
+package com.example.shellinglaptopapp.ui.cart
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,8 @@ import com.example.shellinglaptopapp.data.model.Cart
 import com.example.shellinglaptopapp.databinding.ItemCartBinding
 
 class CartAdapter(
-    private val carts: List<Cart>
+    private val carts: List<Cart>,
+    private val  listener: RecyclerViewCartClickListener
 ): RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     class CartViewHolder(
@@ -46,6 +46,13 @@ class CartAdapter(
 
         carts[position].totalMoneyStr = "$reverseNewTotalMoneyStr VNĐ"
         holder.itemCartBinding.cart = carts[position]
+
+        holder.itemCartBinding.btnOrder.setOnClickListener {
+            listener.orderOnClick(carts[position])
+        }
+        holder.itemCartBinding.btnDelete.setOnClickListener {
+            listener.deleteOnClick(carts[position])
+        }
     }
 
     private fun reverseString(str: String): String{

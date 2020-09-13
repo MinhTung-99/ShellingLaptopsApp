@@ -10,7 +10,7 @@ import com.example.shellinglaptopapp.data.model.Laptop
 
 class LaptopAdapter(
     private val laptops: List<Laptop>,
-    private val listener: RecyclerViewClickListener
+    private val listener: RecyclerViewLaptopClickListener
 ): RecyclerView.Adapter<LaptopAdapter.LaptopViewHolder>() {
 
     class LaptopViewHolder(

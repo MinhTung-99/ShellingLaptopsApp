@@ -1,13 +1,14 @@
 package com.example.shellinglaptopapp.ui.laptops.detail
 
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.data.model.Cart
 import com.example.shellinglaptopapp.data.model.Laptop
-import com.example.shellinglaptopapp.ui.mycart.CartViewModel
+import com.example.shellinglaptopapp.ui.cart.CartFragment
+import com.example.shellinglaptopapp.ui.cart.CartViewModel
 
 class DetailLaptopViewModel: ViewModel() {
 
@@ -18,16 +19,24 @@ class DetailLaptopViewModel: ViewModel() {
 
     fun btnAddCartOnClick(view: View){
 
-       cartViewModel.insertCart(Cart(
+        cartViewModel.insertCart(Cart(
            laptop.image!!,
            laptop.name!!,
            laptop.hardDrive!!,
            laptop.ram!!,
+           laptop.price!!,
            laptop.priceStr!!,
            _count,
            laptop.price!! * _count,
            ""
-       ))
+        ))
+
+        val fragmentTransaction =
+            (view.context as AppCompatActivity).supportFragmentManager?.beginTransaction()
+        val cartFragment = CartFragment()
+        fragmentTransaction.replace(R.id.fragment, cartFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     fun txtIncreaseOnClick(view: View){

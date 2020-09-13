@@ -26,6 +26,9 @@ public class PersonEntity {
 	@Column
 	private String email;
 	
+	@Column
+	private String address;
+	
 	public long getId() {
 		return id;
 	}
@@ -49,5 +52,11 @@ public class PersonEntity {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

@@ -1,13 +1,20 @@
 package com.shelling.dto;
 
 public class PayDTO extends PersonDTO{
+	private String image;
 	private String name;
 	private String hardDrive;
 	private String ram;
-	private double price;
+	private long price;
 	private String amount;
-	private String intoMoney;
+	private long intoMoney;
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String getName() {
 		return name;
 	}
@@ -26,10 +33,10 @@ public class PayDTO extends PersonDTO{
 	public void setRam(String ram) {
 		this.ram = ram;
 	}
-	public double getPrice() {
+	public long getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	public String getAmount() {
@@ -38,10 +45,10 @@ public class PayDTO extends PersonDTO{
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-	public String getIntoMoney() {
+	public long getIntoMoney() {
 		return intoMoney;
 	}
-	public void setIntoMoney(String intoMoney) {
+	public void setIntoMoney(long intoMoney) {
 		this.intoMoney = intoMoney;
 	}
 }

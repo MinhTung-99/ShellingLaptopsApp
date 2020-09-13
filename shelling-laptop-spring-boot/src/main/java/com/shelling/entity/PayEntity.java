@@ -9,6 +9,9 @@ import javax.persistence.Table;
 public class PayEntity extends PersonEntity{
 	
 	@Column
+	private String image;
+	
+	@Column
 	private String name;
 	
 	@Column
@@ -18,14 +21,20 @@ public class PayEntity extends PersonEntity{
 	private String ram;
 	
 	@Column
-	private double price;
+	private long price;
 	
 	@Column
 	private String amount;
 	
 	@Column
-	private String intoMoney;
+	private long intoMoney;
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String getName() {
 		return name;
 	}
@@ -44,10 +53,10 @@ public class PayEntity extends PersonEntity{
 	public void setRam(String ram) {
 		this.ram = ram;
 	}
-	public double getPrice() {
+	public long getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	public String getAmount() {
@@ -56,10 +65,10 @@ public class PayEntity extends PersonEntity{
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-	public String getIntoMoney() {
+	public long getIntoMoney() {
 		return intoMoney;
 	}
-	public void setIntoMoney(String intoMoney) {
+	public void setIntoMoney(long intoMoney) {
 		this.intoMoney = intoMoney;
 	}
 }
