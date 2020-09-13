@@ -7,5 +7,5 @@ class MyArray {
 
     @SerializedName("laptops")
     @Expose
-    val informationLaptop: List<Laptop>? = null
+    val informationLaptop: ArrayList<Laptop>? = null
 }

@@ -1,9 +1,12 @@
 package com.example.shellinglaptopapp.ui.laptops
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,10 +20,12 @@ import com.example.shellinglaptopapp.ui.laptops.detail.DetailLaptopsFragment
 import com.example.shellinglaptopapp.ui.share.ShareLaptopViewModel
 import kotlinx.android.synthetic.main.fragment_laptop.*
 
+
 class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
 
     private lateinit var factory: LaptopViewModelFactory
     private lateinit var viewModel: LaptopViewModel
+    private lateinit var adapter: LaptopAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,8 +46,29 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
         viewModel = ViewModelProvider(this, factory).get(LaptopViewModel::class.java)
         viewModel.getLaptops()
         viewModel.laptops.observe(viewLifecycleOwner, Observer {
-            rv_laptop.layoutManager = GridLayoutManager(context, 2)
-            rv_laptop.adapter = LaptopAdapter(it.informationLaptop!!, this)
+            if(it.informationLaptop!!.isEmpty()){
+                progress_bar.visibility = View.VISIBLE
+                rv_laptop.visibility = View.GONE
+            }else {
+                progress_bar.visibility = View.GONE
+                rv_laptop.visibility = View.VISIBLE
+
+                rv_laptop.layoutManager = GridLayoutManager(context, 2)
+                adapter = LaptopAdapter(it.informationLaptop!!, this)
+                rv_laptop.adapter = adapter
+            }
+        })
+
+        search_laptop.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                adapter.filter(p0!!)
+                return true
+            }
+
         })
     }
 

@@ -33,6 +33,7 @@ class DetailLaptopsFragment: Fragment() {
         )
         detailLaptopViewModel = ViewModelProvider(this).get(DetailLaptopViewModel::class.java)
         binding.detail = detailLaptopViewModel
+        detailLaptopViewModel.context = context!!
 
         return  binding.root
     }

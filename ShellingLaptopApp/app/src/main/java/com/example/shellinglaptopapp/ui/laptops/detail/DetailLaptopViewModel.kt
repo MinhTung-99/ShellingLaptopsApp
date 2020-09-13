@@ -1,6 +1,8 @@
 package com.example.shellinglaptopapp.ui.laptops.detail
 
+import android.content.Context
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +16,7 @@ class DetailLaptopViewModel: ViewModel() {
 
     lateinit var cartViewModel: CartViewModel
     lateinit var laptop: Laptop
+    lateinit var context: Context
     var count = MutableLiveData<Int>()
     private var _count = 0
 
@@ -31,12 +34,16 @@ class DetailLaptopViewModel: ViewModel() {
            ""
         ))
 
-        val fragmentTransaction =
-            (view.context as AppCompatActivity).supportFragmentManager?.beginTransaction()
-        val cartFragment = CartFragment()
-        fragmentTransaction.replace(R.id.fragment, cartFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        if(_count == 0){
+            Toast.makeText(context, "Số lượng đặt mua phải lớn hơn 0", Toast.LENGTH_SHORT).show()
+        }else{
+            val fragmentTransaction =
+                (view.context as AppCompatActivity).supportFragmentManager?.beginTransaction()
+            val cartFragment = CartFragment()
+            fragmentTransaction.replace(R.id.fragment, cartFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
     }
 
     fun txtIncreaseOnClick(view: View){

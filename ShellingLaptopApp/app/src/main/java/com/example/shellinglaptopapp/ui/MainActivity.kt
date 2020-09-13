@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = supportFragmentManager?.beginTransaction()
         val laptopsFragment = LaptopFragment()
         fragmentTransaction.replace(R.id.fragment, laptopsFragment)
-        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 

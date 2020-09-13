@@ -7,11 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.databinding.ItemLaptopBinding
 import com.example.shellinglaptopapp.data.model.Laptop
+import java.util.*
+import kotlin.collections.ArrayList
 
 class LaptopAdapter(
-    private val laptops: List<Laptop>,
+    private val laptops: ArrayList<Laptop>,
     private val listener: RecyclerViewLaptopClickListener
 ): RecyclerView.Adapter<LaptopAdapter.LaptopViewHolder>() {
+
+    private var searchLaptops: ArrayList<Laptop> = ArrayList()
+    init {
+        searchLaptops.addAll(laptops)
+    }
 
     class LaptopViewHolder(
         val itemLaptopBinding: ItemLaptopBinding
@@ -26,7 +33,6 @@ class LaptopAdapter(
         )
 
     override fun onBindViewHolder(holder: LaptopViewHolder, position: Int) {
-
         var reversePrice = reverseString(laptops[position].price.toString())
         var newPriceStr = "" //add "."
         var count = 0
@@ -61,4 +67,20 @@ class LaptopAdapter(
     }
 
     override fun getItemCount(): Int = laptops.size
+
+    fun filter(text: String){
+        var myText = text.toLowerCase(Locale.getDefault())
+        laptops.clear()
+        if(myText.isEmpty()) {
+            laptops.addAll((searchLaptops))
+        }else{
+            for(laptop in searchLaptops){
+                if(laptop.name!!.toLowerCase(Locale.getDefault()).contains(myText)){
+                    laptops.add(laptop)
+                }
+            }
+        }
+
+        notifyDataSetChanged()
+    }
 }
