@@ -17,33 +17,28 @@ import kotlinx.android.synthetic.main.fragment_detail_laptop.*
 
 class DetailLaptopsFragment: Fragment() {
 
-    private lateinit var detailLaptopViewModel: DetailLaptopViewModel
-    private lateinit var binding: FragmentDetailLaptopBinding
+    private val detailLaptopViewModel by lazy {
+        ViewModelProvider(this).get(DetailLaptopViewModel::class.java)
+    }
+
+    private val shareLaptopViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(ShareLaptopViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_detail_laptop,
-            container,
-            false
-        )
-        detailLaptopViewModel = ViewModelProvider(this).get(DetailLaptopViewModel::class.java)
-        binding.detail = detailLaptopViewModel
-        detailLaptopViewModel.context = context!!
-
-        return  binding.root
-    }
+    ): View = FragmentDetailLaptopBinding.inflate(inflater, container, false).also {
+        it.lifecycleOwner = this
+        it.viewModel = detailLaptopViewModel
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as MainActivity).setVisibleToolBar(true)
 
-        val shareLaptopViewModel = ViewModelProvider(requireActivity()).get(ShareLaptopViewModel::class.java)
         shareLaptopViewModel.laptop.observe(viewLifecycleOwner, {
             Glide.with(view.context)
                 .load(it.image)
@@ -64,8 +59,7 @@ class DetailLaptopsFragment: Fragment() {
             detailLaptopViewModel.laptop = it
         })
 
-        val cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        detailLaptopViewModel.cartViewModel = cartViewModel
+        detailLaptopViewModel.cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
 
         detailLaptopViewModel.count.observe(viewLifecycleOwner, {
             txt_count.text = it.toString()

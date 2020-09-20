@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="order"
+            name="viewModel"
             type="com.example.shellinglaptopapp.ui.order.OrderViewModel" />
     </data>
 
@@ -58,7 +58,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/custom_button"
             android:textSize="17sp"
-            android:onClick="@{order :: orderOnClick}"/>
+            android:onClick="@{viewModel :: orderOnClick}"/>
 
     </LinearLayout>
 

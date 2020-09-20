@@ -19,7 +19,9 @@ import kotlinx.android.synthetic.main.fragment_cart.*
 
 class CartFragment: Fragment(), RecyclerViewCartClickListener {
 
-    private lateinit var cartViewModel: CartViewModel
+    private val cartViewModel by lazy {
+        ViewModelProvider(this).get(CartViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +36,6 @@ class CartFragment: Fragment(), RecyclerViewCartClickListener {
 
         (activity as MainActivity).setVisibleToolBar(false)
 
-        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
         cartViewModel.carts.observe(viewLifecycleOwner, {
             if(it.isEmpty()){
                 txt_cart.visibility = View.VISIBLE

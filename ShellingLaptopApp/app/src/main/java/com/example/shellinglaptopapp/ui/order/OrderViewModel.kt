@@ -4,12 +4,31 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.shellinglaptopapp.data.model.Cart
 import com.example.shellinglaptopapp.data.model.Pay
+import com.example.shellinglaptopapp.data.repository.LaptopRepository
+import com.example.shellinglaptopapp.util.Coroutines
+import kotlinx.coroutines.Job
 
-class OrderViewModel: ViewModel() {
+class OrderViewModel(
+    private val repository: LaptopRepository,
+): ViewModel() {
 
-    lateinit var payViewModel: PayViewModel
+    private lateinit var job: Job
+
     lateinit var cart: Cart
     lateinit var orderProvider: OrderProvider
+
+    private fun postPay(pay: Pay){
+        job = Coroutines.ioThenMain(
+            {repository.postPays(pay)},
+            {}
+        )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        if(::job.isInitialized) job.cancel()
+    }
 
     fun orderOnClick(view: View){
 
@@ -26,9 +45,9 @@ class OrderViewModel: ViewModel() {
             orderProvider.email(),
             orderProvider.address()
         )
-        payViewModel.postPay(pay)
+
+        postPay(pay)
         orderProvider.showMessage()
         orderProvider.deleteCart(cart)
     }
-
 }

@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="detail"
+            name="viewModel"
             type="com.example.shellinglaptopapp.ui.laptops.detail.DetailLaptopViewModel" />
     </data>
 
@@ -316,7 +316,7 @@
                     android:layout_centerVertical="true"
                     android:textSize="20dp"
                     android:paddingHorizontal="20dp"
-                    android:onClick="@{detail :: txtIncreaseOnClick}"/>
+                    android:onClick="@{viewModel :: txtIncreaseOnClick}"/>
 
                 <View
                     android:layout_toRightOf="@+id/txt_increase"
@@ -351,7 +351,7 @@
                     android:text="-"
                     android:textSize="30dp"
                     android:paddingHorizontal="20dp"
-                    android:onClick="@{detail :: txtReductionOnClick}"/>
+                    android:onClick="@{viewModel :: txtReductionOnClick}"/>
 
                 <View
                     android:layout_toRightOf="@+id/txt_reduction"
@@ -375,7 +375,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button"
-                android:onClick="@{detail :: btnAddCartOnClick}"
+                android:onClick="@{viewModel :: btnAddCartOnClick}"
                 android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>

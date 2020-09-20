@@ -23,8 +23,23 @@ import kotlinx.android.synthetic.main.fragment_laptop.*
 
 class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
 
-    private lateinit var factory: LaptopViewModelFactory
-    private lateinit var viewModel: LaptopViewModel
+    private val api by lazy {
+        LaptopApi()
+    }
+
+    private val repository by lazy {
+        LaptopRepository(api)
+    }
+
+    private val factory by lazy {
+        LaptopViewModelFactory(repository)
+    }
+
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, factory).get(LaptopViewModel::class.java)
+    }
+
     private lateinit var adapter: LaptopAdapter
 
     override fun onCreateView(
@@ -40,11 +55,8 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
 
         (activity as MainActivity).setVisibleToolBar(true)
 
-        val api = LaptopApi()
-        val repository = LaptopRepository(api)
-        factory = LaptopViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory).get(LaptopViewModel::class.java)
         viewModel.getLaptops()
+
         viewModel.laptops.observe(viewLifecycleOwner, Observer {
             if(it.informationLaptop!!.isEmpty()){
                 progress_bar.visibility = View.VISIBLE

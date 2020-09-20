@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.shellinglaptopapp.data.repository.LaptopRepository
 
-class PayViewModelFactory(
+class OrderViewModelFactory(
     private val repository: LaptopRepository
 ): ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PayViewModel(repository) as T
+        return OrderViewModel(repository) as T
     }
 }
