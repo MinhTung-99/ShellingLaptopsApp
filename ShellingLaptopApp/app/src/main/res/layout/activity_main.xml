@@ -54,6 +54,15 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
+                    android:src="@drawable/ic_message"
+                    android:layout_toLeftOf="@+id/img_cart"
+                    android:layout_marginRight="10dp"
+                    android:onClick="@{main :: moveFragmentBert}"/>
+
+                <ImageView
+                    android:id="@+id/img_cart"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/ic_shopping_cart"
                     android:layout_alignParentRight="true"
                     android:onClick="@{main :: moveMyCartOnClick}"/>

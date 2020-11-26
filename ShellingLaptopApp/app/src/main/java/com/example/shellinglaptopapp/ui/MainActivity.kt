@@ -2,6 +2,7 @@ package com.example.shellinglaptopapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        Log.d("MDFFG",  "uuuu")
+
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.main = viewModel

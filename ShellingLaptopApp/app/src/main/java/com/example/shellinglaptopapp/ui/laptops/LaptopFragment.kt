@@ -53,7 +53,7 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        (activity as MainActivity).setVisibleToolBar(true)
+        (activity as MainActivity).setVisibleToolBar(false)
 
         viewModel.getLaptops()
 
@@ -62,6 +62,7 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
                 progress_bar.visibility = View.VISIBLE
                 rv_laptop.visibility = View.GONE
             }else {
+                (activity as MainActivity).setVisibleToolBar(true)
                 progress_bar.visibility = View.GONE
                 rv_laptop.visibility = View.VISIBLE
 
