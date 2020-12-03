@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
 import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.data.model.Cart
 import com.example.shellinglaptopapp.data.model.Laptop
@@ -37,12 +38,14 @@ class DetailLaptopViewModel: ViewModel() {
         if(_count == 0){
             Toast.makeText(context, "Số lượng đặt mua phải lớn hơn 0", Toast.LENGTH_SHORT).show()
         }else{
-            val fragmentTransaction =
-                (view.context as AppCompatActivity).supportFragmentManager?.beginTransaction()
-            val cartFragment = CartFragment()
-            fragmentTransaction.replace(R.id.fragment, cartFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+//            val fragmentTransaction =
+//                (view.context as AppCompatActivity).supportFragmentManager?.beginTransaction()
+//            val cartFragment = CartFragment()
+//            fragmentTransaction.replace(R.id.fragment, cartFragment)
+//            fragmentTransaction.addToBackStack(null)
+//            fragmentTransaction.commit()
+
+            view.findNavController().navigate(R.id.action_detailLaptopsFragment_to_cartFragment)
         }
     }
 

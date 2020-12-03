@@ -37,8 +37,6 @@ class DetailLaptopsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).setVisibleToolBar(true)
-
         shareLaptopViewModel.laptop.observe(viewLifecycleOwner, {
             Glide.with(view.context)
                 .load(it.image)

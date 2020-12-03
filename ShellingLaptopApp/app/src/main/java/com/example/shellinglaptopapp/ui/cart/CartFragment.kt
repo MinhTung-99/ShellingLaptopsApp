@@ -34,8 +34,6 @@ class CartFragment: Fragment(), RecyclerViewCartClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).setVisibleToolBar(false)
-
         cartViewModel.carts.observe(viewLifecycleOwner, {
             if(it.isEmpty()){
                 txt_cart.visibility = View.VISIBLE
@@ -47,10 +45,10 @@ class CartFragment: Fragment(), RecyclerViewCartClickListener {
 
                 rv_product.adapter = CartAdapter(it, this)
 
-                val itemDeclaration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-                var horizontalDivider = ContextCompat.getDrawable(activity!!, R.drawable.line_divider)
-                itemDeclaration.setDrawable(horizontalDivider!!)
-                rv_product.addItemDecoration(itemDeclaration)
+//                val itemDeclaration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+//                var horizontalDivider = ContextCompat.getDrawable(activity!!, R.drawable.line_divider)
+//                itemDeclaration.setDrawable(horizontalDivider!!)
+                //rv_product.addItemDecoration(itemDeclaration)
             }
         })
     }
@@ -59,11 +57,11 @@ class CartFragment: Fragment(), RecyclerViewCartClickListener {
         val viewModel = ViewModelProvider(requireActivity()).get(ShareCartViewModel::class.java)
         viewModel.cart.value = cart
 
-        val fragmentTransaction = activity!!.supportFragmentManager?.beginTransaction()
-        val orderFragment = OrderFragment()
-        fragmentTransaction.replace(R.id.fragment, orderFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+//        val fragmentTransaction = activity!!.supportFragmentManager?.beginTransaction()
+//        val orderFragment = OrderFragment()
+//        fragmentTransaction.replace(R.id.fragment, orderFragment)
+//        fragmentTransaction.addToBackStack(null)
+//        fragmentTransaction.commit()
     }
 
     override fun deleteOnClick(cart: Cart) {

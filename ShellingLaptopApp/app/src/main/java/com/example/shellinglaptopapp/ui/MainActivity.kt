@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.databinding.ActivityMainBinding
 import com.example.shellinglaptopapp.ui.laptops.LaptopFragment
@@ -20,23 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        Log.d("MDFFG",  "uuuu")
-
-
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.main = viewModel
 
-        val fragmentTransaction = supportFragmentManager?.beginTransaction()
-        val laptopsFragment = LaptopFragment()
-        fragmentTransaction.replace(R.id.fragment, laptopsFragment)
-        fragmentTransaction.commit()
-    }
-
-    fun setVisibleToolBar(check: Boolean){
-        if(check){
-            tool_bar.visibility = View.VISIBLE
-        }else {
-            tool_bar.visibility = View.GONE
-        }
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
     }
 }

@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shellinglaptopapp.R
 import com.example.shellinglaptopapp.data.model.Laptop
 import com.example.shellinglaptopapp.data.network.LaptopApi
 import com.example.shellinglaptopapp.data.repository.LaptopRepository
+import com.example.shellinglaptopapp.databinding.FragmentLaptopBinding
 import com.example.shellinglaptopapp.ui.MainActivity
 import com.example.shellinglaptopapp.ui.laptops.detail.DetailLaptopsFragment
 import com.example.shellinglaptopapp.ui.share.ShareLaptopViewModel
@@ -46,14 +50,17 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_laptop, container, false)
-    }
+    ): View? = FragmentLaptopBinding.inflate(inflater,container,false).also {
+        it.lifecycleOwner = this
+        it.viewmodel = viewModel
+    }.root
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        (activity as MainActivity).setVisibleToolBar(false)
+        search_laptop.visibility = View.GONE
+        img_bert.visibility = View.GONE
+        img_cart.visibility = View.GONE
 
         viewModel.getLaptops()
 
@@ -62,7 +69,9 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
                 progress_bar.visibility = View.VISIBLE
                 rv_laptop.visibility = View.GONE
             }else {
-                (activity as MainActivity).setVisibleToolBar(true)
+                search_laptop.visibility = View.VISIBLE
+                img_bert.visibility = View.VISIBLE
+                img_cart.visibility = View.VISIBLE
                 progress_bar.visibility = View.GONE
                 rv_laptop.visibility = View.VISIBLE
 
@@ -90,10 +99,6 @@ class LaptopFragment: Fragment(), RecyclerViewLaptopClickListener {
         val viewModel = ViewModelProvider(requireActivity()).get(ShareLaptopViewModel::class.java)
         viewModel.laptop.value = laptop
 
-        val fragmentTransaction = activity!!.supportFragmentManager?.beginTransaction()
-        val detailLaptopsFragment = DetailLaptopsFragment()
-        fragmentTransaction.replace(R.id.fragment, detailLaptopsFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        findNavController().navigate(R.id.action_laptopFragment_to_detailLaptopsFragment)
     }
 }

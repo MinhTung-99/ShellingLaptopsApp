@@ -19,7 +19,7 @@ abstract class CartRoomDatabase: RoomDatabase() {
             val tempInstance = INSTANCE
 
             if(tempInstance != null){
-                return tempInstance!!
+                return tempInstance
             }
             synchronized(this){
                 synchronized(CartRoomDatabase::class){

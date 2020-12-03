@@ -15,6 +15,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        //add
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,7 +30,15 @@ android {
 
     //add
     android.buildFeatures.dataBinding = true
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
+// App assets folder:
+project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets/'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -40,6 +50,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Kotlin
+    def nav_version = "2.3.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
@@ -64,10 +79,6 @@ dependencies {
     implementation 'org.kodein.di:kodein-di-generic-jvm:6.2.1'
     implementation 'org.kodein.di:kodein-di-framework-android-x:6.2.1'
 
-    def nav_version = "2.2.0-rc01"
-    implementation "android.arch.navigation:navigation-fragment:$nav_version"
-    implementation "android.arch.navigation:navigation-ui:$nav_version"
-
     //use CardView
     implementation 'com.android.support:design:30.0.0'
 
@@ -79,4 +90,12 @@ dependencies {
 
     //swipe
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.guava:guava:28.1-android'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //tensorflow
+    implementation ('org.tensorflow:tensorflow-lite:2.3.0')
+    implementation ('org.tensorflow:tensorflow-lite-metadata:0.0.0-nightly') { changing = true }
 }

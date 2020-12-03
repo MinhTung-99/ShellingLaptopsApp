@@ -1,70 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<layout>
     <data>
         <variable
             name="viewmodel"
             type="com.example.shellinglaptopapp.ui.bert.BertViewModel" />
-
-        <variable
-            name="bert"
-            type="com.example.shellinglaptopapp.data.model.Bert" />
     </data>
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/txt_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:text="Hello, How can I help you?" />
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <EditText
+            android:id="@+id/edt_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter questions"
-            android:textSize="20sp"
-            android:textCursorDrawable="@drawable/custom_cusor_edittext"
-            android:text="@{viewmodel.bert.question}"
-            app:textWatcher="@{viewmodel.questionTextWatcher}"
-            android:layout_toLeftOf="@id/btn_send"
-            android:backgroundTint="#778899"
-            android:layout_below="@id/txt_text"/>
+            android:layout_toLeftOf="@+id/btn_send"
+            android:hint="write question"
+            android:text="@{viewmodel.edittext}"
+            app:textWatcher="@{viewmodel.messagesTextWatcher}"
+            android:layout_alignParentBottom="true" />
 
         <Button
             android:id="@+id/btn_send"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_send"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/txt_text"
-            android:onClick="@{viewmodel :: sendMessageOnClick}"/>
+            android:onClick="@{viewmodel :: btnSendOnClick}" />
 
         <TextView
+            android:id="@+id/txt_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{bert.answer}"
-            android:layout_below="@+id/btn_send"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:text="Hello. How can i help you?"
             android:textColor="#ffffff"
-            android:layout_centerHorizontal="true"
-            android:visibility="@{viewmodel.txtAnswer}"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
             android:background="@drawable/custom_text_view"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_message"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_send"
+            android:layout_below="@+id/txt_text"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_send"
-            android:visibility="@{viewmodel.progress}"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:indeterminateTint="#778899"/>
+            android:visibility="@{viewmodel.progress}"/>
 
     </RelativeLayout>
 </layout>
