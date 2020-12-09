@@ -1,11 +1,20 @@
-package com.shelling.dto;
+package com.shelling.repository;
 
-public class LaptopDTO {
-	private long id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "laptop")
+public class Laptop {
+	
+	private Long id;
 	private String brand;
 	private String name;
 	private String cpu;
-	private String cardGraphic;
+	private String card;
 	private String hardDrive;
 	private String ram;
 	private String display;
@@ -16,10 +25,14 @@ public class LaptopDTO {
 	private String pin;
 	private long price;
 	
-	public long getId() {
+	public Laptop() {}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getBrand() {
@@ -40,18 +53,24 @@ public class LaptopDTO {
 	public void setCpu(String cpu) {
 		this.cpu = cpu;
 	}
-	public String getCardGraphic() {
-		return cardGraphic;
+	
+	
+	public String getCard() {
+		return card;
 	}
-	public void setCardGraphic(String cardGraphic) {
-		this.cardGraphic = cardGraphic;
+
+	public void setCard(String card) {
+		this.card = card;
 	}
+
 	public String getHardDrive() {
 		return hardDrive;
 	}
+
 	public void setHardDrive(String hardDrive) {
 		this.hardDrive = hardDrive;
 	}
+
 	public String getRam() {
 		return ram;
 	}
