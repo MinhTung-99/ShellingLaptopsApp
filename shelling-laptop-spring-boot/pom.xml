@@ -41,6 +41,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+<!-- 		<dependency>
+<groupId>org.apache.tomcat</groupId>
+<artifactId>tomcat-juli</artifactId>
+<version>7.0.19</version>
+</dependency> -->
+		
 	</dependencies>
 
 	<build>

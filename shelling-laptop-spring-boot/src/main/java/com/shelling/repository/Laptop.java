@@ -4,17 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "laptop")
 public class Laptop {
 	
-	private Long id;
+	@OneToMany
+	private Long laptopId;
 	private String brand;
 	private String name;
 	private String cpu;
-	private String card;
+	private String cardGraphic;
 	private String hardDrive;
 	private String ram;
 	private String display;
@@ -29,11 +31,11 @@ public class Laptop {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
+	public Long getLaptopId() {
+		return laptopId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setLaptopId(Long laptopId) {
+		this.laptopId = laptopId;
 	}
 	public String getBrand() {
 		return brand;
@@ -53,20 +55,17 @@ public class Laptop {
 	public void setCpu(String cpu) {
 		this.cpu = cpu;
 	}
-	
-	
-	public String getCard() {
-		return card;
+	public String getCardGraphic() {
+		return cardGraphic;
 	}
 
-	public void setCard(String card) {
-		this.card = card;
+	public void setCardGraphic(String cardGraphic) {
+		this.cardGraphic = cardGraphic;
 	}
 
 	public String getHardDrive() {
 		return hardDrive;
 	}
-
 	public void setHardDrive(String hardDrive) {
 		this.hardDrive = hardDrive;
 	}

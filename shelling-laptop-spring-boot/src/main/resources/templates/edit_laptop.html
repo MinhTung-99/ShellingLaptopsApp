@@ -7,16 +7,16 @@
 </head>
 <body>
     <div align="center">
-        <h1>Edit Product</h1>
+        <h1>Edit Laptop</h1>
         <br />
         <form action="#" th:action="@{/save}" th:object="${laptop}"
             method="post">
  
             <table border="0" cellpadding="10">
                 <tr>             
-                    <td>Product ID:</td>
+                    <td>Laptop ID:</td>
                     <td>
-                        <input type="text" th:field="*{id}" readonly="readonly" />
+                        <input type="text" th:field="*{laptopId}" readonly="readonly" />
                     </td>
                 </tr>        
                 <tr>
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td>Card:</td>
-                    <td><input type="text" th:field="*{card}" /></td>
+                    <td><input type="text" th:field="*{cardGraphic}" /></td>
                 </tr>
                 <tr>
                     <td>Hard Drive:</td>

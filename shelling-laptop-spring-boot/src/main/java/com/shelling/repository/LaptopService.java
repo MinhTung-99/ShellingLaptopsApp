@@ -9,21 +9,28 @@ import org.springframework.stereotype.Service;
 public class LaptopService {
 	
 	@Autowired
-	private LaptopRepository repo;
+    private CartRepository cartRepository;
+	
+	@Autowired
+	private LaptopRepository laptopRepository;
+	
+	public List<Cart> getCarts(){
+		return cartRepository.findAll();
+	}
 	
 	public List<Laptop> getLaptops(){
-		return repo.findAll();
+		return laptopRepository.findAll();
 	}
 	
 	public void save(Laptop laptop) {
-		repo.save(laptop);
+		laptopRepository.save(laptop);
 	}
 	
 	public Laptop get(Long id) {
-		return repo.findById(id).get();
+		return laptopRepository.findById(id).get();
 	}
 	
 	public void delete(Long id) {
-		repo.deleteById(id);
+		laptopRepository.deleteById(id);
 	}
 }

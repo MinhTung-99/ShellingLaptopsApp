@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Product List</h1>
-    <a href="/new">Create New Product</a>
+    <a href="/new">Create New Laptop</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -34,11 +34,11 @@
                 <td>
                 	<img th:src="@{${laptop.image}}" alt="alternatetext" width="200">
                 </td>
-                <td th:text="${laptop.id}">Product ID</td>
+                <td th:text="${laptop.laptopId}">Product ID</td>
                 <td th:text="${laptop.brand}">Bran</td>
                 <td th:text="${laptop.name}">Name</td>
                 <td th:text="${laptop.cpu}">Cpu</td>
-                <td th:text="${laptop.card}">Card Graphic</td>
+                <td th:text="${laptop.cardGraphic}">Card Graphic</td>
                 <td th:text="${laptop.hardDrive}">Hard Drive</td>
                 <td th:text="${laptop.ram}">Ram</td>
                 <td th:text="${laptop.display}">Display</td>
@@ -48,9 +48,9 @@
                 <td th:text="${laptop.pin}">Pin</td>
                 <td th:text="${laptop.price}">Price</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${laptop.id}}">Edit</a>
+                    <a th:href="@{'/edit/' + ${laptop.laptopId}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${laptop.id}}">Delete</a>
+                    <a th:href="@{'/delete/' + ${laptop.laptopId}}">Delete</a>
                 </td>
             </tr>
         </tbody>
