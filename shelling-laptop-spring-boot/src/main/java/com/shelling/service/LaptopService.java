@@ -1,9 +1,18 @@
-package com.shelling.repository;
+package com.shelling.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shelling.repository.Account;
+import com.shelling.repository.AccountRepository;
+import com.shelling.repository.Cart;
+import com.shelling.repository.CartRepository;
+import com.shelling.repository.Laptop;
+import com.shelling.repository.LaptopRepository;
+import com.shelling.repository.Store;
+import com.shelling.repository.StoreRepository;
 
 @Service
 public class LaptopService {
@@ -13,6 +22,20 @@ public class LaptopService {
 	
 	@Autowired
 	private LaptopRepository laptopRepository;
+	
+	@Autowired
+	private StoreRepository storeRepository;
+	
+	@Autowired
+	private AccountRepository accountRepository;
+	
+	public List<Account> getAccounts(){
+		return accountRepository.findAll();
+	}
+	
+	public List<Store> getStores(){
+		return storeRepository.findAll();
+	}
 	
 	public List<Cart> getCarts(){
 		return cartRepository.findAll();

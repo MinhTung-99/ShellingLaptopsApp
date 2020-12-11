@@ -1,44 +1,51 @@
 package com.shelling.repository;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Table(name = "account")
+@Entity
 public class Account {
 	
-	@OneToMany
-	private Long account_id;
+	private Long accountId;
 	private String account;
-	private String type_account;
+	private String typeAccount;
 	private String password;
 	
 	public Account() {}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getAccount_id() {
-		return account_id;
+	public Long getAccountId() {
+		return accountId;
 	}
-	public void setAccount_id(Long account_id) {
-		this.account_id = account_id;
-	}
-	public String getAccount() {
-		return account;
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	public String getType_account() {
-		return type_account;
+	
+	public String getAccount() {
+		return account;
 	}
-	public void setType_account(String type_account) {
-		this.type_account = type_account;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getTypeAccount() {
+		return typeAccount;
+	}
+
+	public void setTypeAccount(String typeAccount) {
+		this.typeAccount = typeAccount;
 	}
 }

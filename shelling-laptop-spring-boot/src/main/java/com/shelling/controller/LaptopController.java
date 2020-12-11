@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import com.shelling.repository.Laptop;
-import com.shelling.repository.LaptopService;
+import com.shelling.service.LaptopService;
 
 @Controller
 public class LaptopController {
