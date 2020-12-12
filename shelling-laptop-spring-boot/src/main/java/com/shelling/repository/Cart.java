@@ -15,6 +15,7 @@ public class Cart {
 	private Long cartId;
 	private Long accountId;
 	private Long laptopId;
+	private Long count;
 	
 	public Cart() {}
 
@@ -33,4 +34,21 @@ public class Cart {
 	public void setLaptopId(Long laptopId) {
 		this.laptopId = laptopId;
 	}
+
+	public Long getCount() {
+		return count;
+	}
+
+	public void setCount(Long count) {
+		this.count = count;
+	}
+
+	public Long getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
+	}
+	
 }

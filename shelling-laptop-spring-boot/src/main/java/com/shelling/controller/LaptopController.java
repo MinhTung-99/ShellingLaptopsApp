@@ -26,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
+import com.shelling.repository.Account;
 import com.shelling.repository.Laptop;
 import com.shelling.service.LaptopService;
 
@@ -38,23 +40,35 @@ public class LaptopController {
 	private LaptopService service;
 	
 	@RequestMapping("/")
-	public String viewHomePage(Model model) {
-		List<Laptop> laptops = service.getLaptops();
-		model.addAttribute("laptops", laptops);
+	public String viewHomePage() {
 		return "index";
 	}
 	
-	@RequestMapping("/new")
-	public String showNewLaptopForm(Model model) {
+	//-------------ACCOUNT--------------------
+	@RequestMapping("/accountpage")
+	public String viewAccountPage(Model model) {
+		List<Account> accounts = service.getAccounts();
+		model.addAttribute("accounts", accounts);
+		return "account";
+	}
+	
+	//--------------LAPTOP--------------------
+	@RequestMapping("/laptoppage")
+	public String viewLaptopPage(Model model) {
+		List<Laptop> laptops = service.getLaptops();
+		model.addAttribute("laptops", laptops);
+		return "laptop";
+	}
+	@RequestMapping("/newlaptop")
+	public String newLaptop(Model model) {
 		
 		Laptop laptop = new Laptop();
 		model.addAttribute("laptop", laptop);
 		
 		return "new_laptop";
 	}
-	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	@PostMapping("/save")
+	@RequestMapping(value = "/savelaptop", method = RequestMethod.POST)
+//	@PostMapping("/savelaptop")
 	public String saveLaptop(@ModelAttribute("laptop") Laptop laptop, @RequestParam("photo") MultipartFile photo) {
 	    
 	    Path path = Paths.get("uploads/");
@@ -74,8 +88,8 @@ public class LaptopController {
 	    return "redirect:/";
 	}
 	
-	@RequestMapping("/edit/{id}")
-	public ModelAndView showEditLaptopPage(@PathVariable(name = "id") Long id) {
+	@RequestMapping("/editlaptop/{id}")
+	public ModelAndView editLaptop(@PathVariable(name = "id") Long id) {
 	    ModelAndView mav = new ModelAndView("edit_laptop");
 	    Laptop laptop = service.get(id);
 	    mav.addObject("laptop", laptop);
@@ -83,7 +97,7 @@ public class LaptopController {
 	    return mav;
 	}
 	
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/deletelaptop/{id}")
 	public String deleteLaptop(@PathVariable(name = "id") Long id) {
 	    service.delete(id);
 	    return "redirect:/";       
@@ -112,4 +126,5 @@ public class LaptopController {
 		
 		return ResponseEntity.badRequest().build();
 	}
+	
 }

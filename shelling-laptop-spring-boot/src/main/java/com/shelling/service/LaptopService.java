@@ -2,6 +2,7 @@ package com.shelling.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,18 +30,32 @@ public class LaptopService {
 	@Autowired
 	private AccountRepository accountRepository;
 	
+	//-------------ACCCOUNT--------------------
+	public Account saveAccount(Account account){
+		return accountRepository.save(account);
+	}
 	public List<Account> getAccounts(){
 		return accountRepository.findAll();
 	}
-	
-	public List<Store> getStores(){
-		return storeRepository.findAll();
+	public Account getAccount(Long accountId) {
+		return accountRepository.findById(accountId).get();
 	}
 	
+	//-------------CART--------------------
 	public List<Cart> getCarts(){
 		return cartRepository.findAll();
 	}
+	public Cart saveCart(Cart cart) {
+		return cartRepository.save(cart);
+	}
+	public Cart getCart(Long cartId) {
+		return cartRepository.findById(cartId).get();
+	}
+	public void deleteCart(Long cartId) {
+		cartRepository.deleteById(cartId);
+	}
 	
+	//-------------LAPTOP--------------------
 	public List<Laptop> getLaptops(){
 		return laptopRepository.findAll();
 	}
@@ -55,5 +70,13 @@ public class LaptopService {
 	
 	public void delete(Long id) {
 		laptopRepository.deleteById(id);
+	}
+	
+	//-------------STORE--------------------
+	public List<Store> getStores(){
+		return storeRepository.findAll();
+	}
+	public Store saveStore(Store store) {
+		return storeRepository.save(store);
 	}
 }
