@@ -6,19 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "account")
+@Table(name = "users")
 @Entity
-public class Account {
+public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long accountId;
 	private String account;
 	private String typeAccount;
 	private String password;
 	private boolean isLogin;
 	
-	public Account() {}
+	public User() {}
 
 	public Long getAccountId() {
 		return accountId;
@@ -26,14 +26,14 @@ public class Account {
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
 	}
-	public void setAccount(String account) {
-		this.account = account;
-	}
-	
 	public String getAccount() {
 		return account;
 	}
-	
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
 	public String getPassword() {
 		return password;
 	}

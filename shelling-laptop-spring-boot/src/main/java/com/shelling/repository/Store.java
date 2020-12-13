@@ -17,7 +17,8 @@ public class Store {
 	private String name;
 	private String address;
 	private String phone;
-	private String count;
+	private Long count;
+	private float price;
 	
 	public Store() {}
 
@@ -68,11 +69,19 @@ public class Store {
 		this.accountId = accountId;
 	}
 
-	public String getCount() {
+	public Long getCount() {
 		return count;
 	}
 
-	public void setCount(String count) {
+	public void setCount(Long count) {
 		this.count = count;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 }

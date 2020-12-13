@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shelling.repository.Account;
-import com.shelling.repository.AccountRepository;
+import com.shelling.repository.User;
+import com.shelling.repository.UserRepository;
 import com.shelling.repository.Cart;
 import com.shelling.repository.CartRepository;
 import com.shelling.repository.Laptop;
@@ -28,17 +28,17 @@ public class LaptopService {
 	private StoreRepository storeRepository;
 	
 	@Autowired
-	private AccountRepository accountRepository;
+	private UserRepository userRepository;
 	
 	//-------------ACCCOUNT--------------------
-	public Account saveAccount(Account account){
-		return accountRepository.save(account);
+	public User saveAccount(User account){
+		return userRepository.save(account);
 	}
-	public List<Account> getAccounts(){
-		return accountRepository.findAll();
+	public List<User> getAccounts(){
+		return userRepository.findAll();
 	}
-	public Account getAccount(Long accountId) {
-		return accountRepository.findById(accountId).get();
+	public User getAccount(Long accountId) {
+		return userRepository.findById(accountId).get();
 	}
 	
 	//-------------CART--------------------
@@ -60,15 +60,15 @@ public class LaptopService {
 		return laptopRepository.findAll();
 	}
 	
-	public void save(Laptop laptop) {
+	public void saveLaptop(Laptop laptop) {
 		laptopRepository.save(laptop);
 	}
 	
-	public Laptop get(Long id) {
+	public Laptop getLaptop(Long id) {
 		return laptopRepository.findById(id).get();
 	}
 	
-	public void delete(Long id) {
+	public void deleteLaptop(Long id) {
 		laptopRepository.deleteById(id);
 	}
 	
@@ -78,5 +78,8 @@ public class LaptopService {
 	}
 	public Store saveStore(Store store) {
 		return storeRepository.save(store);
+	}
+	public void deleteStore(Long storeId) {
+		storeRepository.deleteById(storeId);
 	}
 }

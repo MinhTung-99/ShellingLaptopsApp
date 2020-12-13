@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shelling.repository.Account;
+import com.shelling.repository.User;
 import com.shelling.repository.Cart;
 import com.shelling.repository.Laptop;
 import com.shelling.repository.Store;
@@ -24,8 +24,8 @@ public class LaptopApi {
 
 	//-------------ACCCOUNT--------------------
 	@PostMapping("/login")
-	public Account loginAccount(@RequestBody Account account) {
-		List<Account> accounts = service.getAccounts();
+	public User loginAccount(@RequestBody User account) {
+		List<User> accounts = service.getAccounts();
 		for(int i = 0; i < accounts.size(); i++) {
 			if(accounts.get(i).getAccount().equals(account.getAccount()) 
 					&& accounts.get(i).getPassword().equals(account.getPassword())) {
@@ -38,15 +38,15 @@ public class LaptopApi {
 		return null;
 	}
 	@PostMapping("/register")
-	public boolean registerAccount(@RequestBody Account account) {
+	public boolean registerAccount(@RequestBody User account) {
 		if(service.saveAccount(account) != null)
 			return true;
 		
 		return false;
 	}
 	@PostMapping("/logout")
-	public boolean logoutAccount(@RequestBody Account account) {
-		Account acc = service.getAccount(account.getAccountId());
+	public boolean logoutAccount(@RequestBody User account) {
+		User acc = service.getAccount(account.getAccountId());
 		acc.setLogin(false);
 		if(service.saveAccount(acc) != null)
 			return true;
@@ -61,7 +61,7 @@ public class LaptopApi {
 	
 	//-------------CART--------------------
 	@PostMapping("/cart")
-	public List<Laptop> showCart(@RequestBody Account account){
+	public List<Laptop> showCart(@RequestBody User account){
 		List<Laptop> laptops = service.getLaptops();
 		List<Cart> carts = service.getCarts();
 		if(carts.size() == 0)
@@ -104,7 +104,7 @@ public class LaptopApi {
 	
 	//-------------STORE--------------------
 	@PostMapping("/store")
-	public List<Store> showStore(@RequestBody Account account){
+	public List<Store> showStore(@RequestBody User account){
 		List<Store> stores = service.getStores();
 		
 		List<Store> accountStores = new ArrayList<>();
@@ -117,7 +117,7 @@ public class LaptopApi {
 		return accountStores;
 	}
 	@PostMapping("/storelaptop")
-	public List<Laptop> showStoreLaptop(@RequestBody Account account){
+	public List<Laptop> showStoreLaptop(@RequestBody User account){
 		List<Store> stores = service.getStores();
 		List<Laptop> laptops = service.getLaptops();
 		
@@ -136,6 +136,13 @@ public class LaptopApi {
 	}
 	@PostMapping("/insertstore")
 	public boolean insertStore(@RequestBody Store store) {
+		List<Laptop> laptops = service.getLaptops();
+		for(int j = 0; j < laptops.size(); j++) {
+			if(store.getLaptopId() == laptops.get(j).getLaptopId()) {
+				store.setPrice(store.getCount() * laptops.get(j).getPrice());
+			}
+		}
+		
 		if(service.saveStore(store) != null)
 			return true;
 		
