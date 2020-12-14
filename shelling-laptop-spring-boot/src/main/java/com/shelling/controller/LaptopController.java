@@ -28,9 +28,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import com.shelling.repository.User;
 import com.shelling.repository.Laptop;
 import com.shelling.repository.Store;
+import com.shelling.repository.User;
 import com.shelling.service.LaptopService;
 
 @Controller
@@ -99,7 +99,7 @@ public class LaptopController {
 			    System.out.println(photo);
 			}
 			
-			laptop.setImage("http://localhost:8080/getimage/" + photo.getOriginalFilename());
+			laptop.setImage("https://shellinglaptop.herokuapp.com/getimage/" + photo.getOriginalFilename());
 	    }
 	    
 	    service.saveLaptop(laptop);
