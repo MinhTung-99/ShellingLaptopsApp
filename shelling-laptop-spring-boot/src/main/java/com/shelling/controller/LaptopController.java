@@ -42,14 +42,7 @@ public class LaptopController {
 	private LaptopService service;
 	
 	@RequestMapping("/")
-	public String viewLoginPage(Model model) {
-		
-		return "login";
-	}
-	
-	@RequestMapping("/index")
 	public String viewHomePage() {
-		
 		return "index";
 	}
 	
