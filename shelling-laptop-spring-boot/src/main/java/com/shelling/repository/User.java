@@ -56,5 +56,4 @@ public class User {
 	public void setLogin(boolean isLogin) {
 		this.isLogin = isLogin;
 	}
-	
 }

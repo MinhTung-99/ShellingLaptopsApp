@@ -61,7 +61,7 @@ public class LaptopApi {
 	
 	//-------------CART--------------------
 	@PostMapping("/cart")
-	public List<Laptop> showCart(@RequestBody User account){
+	public List<Laptop> showCart(@RequestBody User user){
 		List<Laptop> laptops = service.getLaptops();
 		List<Cart> carts = service.getCarts();
 		if(carts.size() == 0)
@@ -70,7 +70,7 @@ public class LaptopApi {
 		List<Laptop> laptopCarts = new ArrayList<>();
 		for(int i = 0; i < laptops.size(); i++) {
 			for(int j = 0; j < carts.size(); j++) {
-				if(carts.get(j).getAccountId() == account.getAccountId()) {
+				if(carts.get(j).getAccountId() == user.getAccountId()) {
 					if(laptops.get(i).getLaptopId() == carts.get(j).getLaptopId()) {
 						laptops.get(i).setCount(carts.get(i).getCount());
 						laptopCarts.add(laptops.get(i));

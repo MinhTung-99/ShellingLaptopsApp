@@ -1,5 +1,12 @@
 package com.shelling.controller;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -9,6 +16,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +51,7 @@ public class LaptopController {
 	@Autowired
 	private LaptopService service;
 	
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String viewHomePage() {
 		return "index";
 	}
@@ -65,7 +75,7 @@ public class LaptopController {
 	@RequestMapping("/deletestore/{id}")
 	public String deleteStore(@PathVariable(name = "id") Long storeId) {
 	    service.deleteStore(storeId);
-	    return "redirect:/";   
+	    return "redirect:/storepage";   
 	}
 	
 	//--------------LAPTOP--------------------
@@ -87,7 +97,7 @@ public class LaptopController {
 	public String saveLaptop(@ModelAttribute("laptop") Laptop laptop, @RequestParam("photo") MultipartFile photo) {
 	    
 	    if(!photo.isEmpty()) {
-	    	Path path = Paths.get("uploads/");
+	    	Path path = Paths.get("src/main/resources/static/images/");
 			
 			try {
 				InputStream inputStream = photo.getInputStream();
@@ -96,15 +106,14 @@ public class LaptopController {
 				
 			} catch (IOException e) {
 				e.printStackTrace();
-			    System.out.println(photo);
 			}
 			
-			laptop.setImage("https://shellinglaptop.herokuapp.com/getimage/" + photo.getOriginalFilename());
+			laptop.setImage("images/" + photo.getOriginalFilename());
 	    }
 	    
 	    service.saveLaptop(laptop);
 	     
-	    return "redirect:/";
+	    return "redirect:/laptoppage";
 	}
 	
 	@RequestMapping("/editlaptop/{id}")
@@ -118,8 +127,13 @@ public class LaptopController {
 	
 	@RequestMapping("/deletelaptop/{id}")
 	public String deleteLaptop(@PathVariable(name = "id") Long id) {
+	    Laptop laptop = service.getLaptop(id);
+	    System.out.println(laptop.getImage());
+	    File file = new File("src/main/resources/static/" + laptop.getImage());
+	    file.delete();
 	    service.deleteLaptop(id);
-	    return "redirect:/";       
+	    
+	    return "redirect:/laptoppage";       
 	}
 	
 	@RequestMapping(value = "getimage/{photo:.+}", method =  RequestMethod.GET)
@@ -129,7 +143,7 @@ public class LaptopController {
 			logger.info("path paaram, photo: {}", photo);
 
 			if(!photo.equals("")) {
-				Path fileName = Paths.get("uploads", photo);
+				Path fileName = Paths.get("src/main/resources/static/images", photo);
 				byte[] buffer;
 				buffer = Files.readAllBytes(fileName);
 				ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);

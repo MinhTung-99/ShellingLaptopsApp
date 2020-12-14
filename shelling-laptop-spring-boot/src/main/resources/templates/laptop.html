@@ -11,6 +11,9 @@
         <script th:src="@{js/all.min.js}"></script>
     </head>
     <body>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -70,7 +73,7 @@
 								        <tbody>
 								            <tr th:each="laptop : ${laptops}">
 								                <td>
-								                	<img th:src="@{${laptop.image}}" alt="alternatetext" width="200">
+								                	<img th:src="${{laptop.image}}" width="200">
 								                </td>
 								                <td th:text="${laptop.laptopId}">Product ID</td>
 								                <td th:text="${laptop.brand}">Bran</td>
