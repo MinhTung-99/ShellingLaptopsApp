@@ -1,12 +1,6 @@
 package com.shelling.controller;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -39,8 +33,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import com.shelling.repository.Laptop;
-import com.shelling.repository.Store;
-import com.shelling.repository.User;
+import com.shelling.repository.Order;
 import com.shelling.service.LaptopService;
 
 @Controller
@@ -51,31 +44,18 @@ public class LaptopController {
 	@Autowired
 	private LaptopService service;
 	
-	@RequestMapping("/index")
-	public String viewHomePage() {
-		return "index";
-	}
-	
-	//-------------ACCOUNT--------------------
-	@RequestMapping("/userpage")
-	public String viewUserPage(Model model) {
-		List<User> users = service.getAccounts();
-		model.addAttribute("users", users);
-		return "user";
-	}
-	
-	//-------------STORE----------------------
-	@RequestMapping("/storepage")
+	//-------------ORDER----------------------
+	@RequestMapping("/orderpage")
 	public String viewStorePage(Model model) {
-		List<Store> stores = service.getStores();
-		model.addAttribute("stores", stores);
+		List<Order> orders = service.getOrders();
+		model.addAttribute("orders", orders);
 		
-		return "store";
+		return "order";
 	}
-	@RequestMapping("/deletestore/{id}")
-	public String deleteStore(@PathVariable(name = "id") Long storeId) {
-	    service.deleteStore(storeId);
-	    return "redirect:/storepage";   
+	@RequestMapping("/deleteorder/{id}")
+	public String deleteStore(@PathVariable(name = "id") Long orderId) {
+	    service.deleteOrder(orderId);
+	    return "redirect:/orderpage";   
 	}
 	
 	//--------------LAPTOP--------------------
@@ -107,7 +87,7 @@ public class LaptopController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+			 
 			laptop.setImage("images/" + photo.getOriginalFilename());
 	    }
 	    

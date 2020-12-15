@@ -20,13 +20,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Laptops
                             </a>
-                            <a class="nav-link" href="/userpage">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Users
-                            </a>
-							 <a class="nav-link" href="/storepage">
+							 <a class="nav-link" href="/orderpage">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Stores
+                                Orders
                             </a>
                         </div>
                     </div>
@@ -42,24 +38,36 @@
                         <div class="card mb-4">
 							<div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                DataTable Accounts
+                                DataTable Store
                             </div>
                            <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
 								            <tr>
-								            	<th>Account Id</th>
-								                <th>Account</th>
-								                <th>Password</th>
+								            	<th>Order Id</th>
+								            	<th>Laptop Id</th>
+								            	<th>Name</th>
+								            	<th>Address</th>
+								            	<th>Phone</th>
+								            	<th>Count</th>
+								            	<th>Price</th>
+								            	<th>Action</th>
 								            </tr>
 								        </thead>
 								        <tbody>
-								            <tr th:each="user : ${users}">
-								                <td th:text="${user.accountId}"/>
-								                <td th:text="${user.account}"/>
-								                <td th:text="${user.password}"/>
-								            </tr>
+								        	<tr th:each="order : ${orders}">
+								        		<td th:text="${order.orderId}"/>
+								        		<td th:text="${order.laptopId}"/>
+								        		<td th:text="${order.name}"/>
+								        		<td th:text="${order.address}"/>
+								        		<td th:text="${order.phone}"/>
+								        		<td th:text="${order.count}"/>
+								        		<td th:text="${order.price}"/>
+								        		<td>
+								                    <a th:href="@{'/deleteorder/' + ${order.orderId}}">Delete</a>
+								                </td>
+								        	</tr>
 								        </tbody>
                                     </table>
                                 </div>
@@ -71,6 +79,6 @@
         </div>
         <script th:src="@{js/jquery-3.5.1.min.js}" crossorigin="anonymous"></script>
         <script th:src="@{js/bootstrap.bundle.min.js}" crossorigin="anonymous"></script>
-        <script th:src="@{js/scripts.js}"></script>			
+        <script th:src="@{js/scripts.js}"></script>		
     </body>
 </html>

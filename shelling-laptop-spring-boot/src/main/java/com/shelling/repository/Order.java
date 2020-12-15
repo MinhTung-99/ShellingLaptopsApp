@@ -5,29 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "store")
+@Table(name = "orders")
 @Entity
-public class Store {
+public class Order {
 	
 	@Id
 	@GeneratedValue
-	private Long storeId;
+	private Long orderId;
 	private Long laptopId;
-	private Long accountId;
 	private String name;
 	private String address;
 	private String phone;
 	private Long count;
 	private float price;
 	
-	public Store() {}
+	public Order() {}
 
-	public Long getStoreId() {
-		return storeId;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setStoreId(Long storeId) {
-		this.storeId = storeId;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public Long getLaptopId() {
@@ -60,13 +59,6 @@ public class Store {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
 	}
 
 	public Long getCount() {
