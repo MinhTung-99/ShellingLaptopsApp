@@ -15,7 +15,7 @@
             <table border="0" cellpadding="10">
             	<tr>
             		<td>Image:</td>
-            		<img th:src="${{laptop.image}}" alt="alternatetext" width="400">
+            		<img th:src="@{*{image}}" alt="alternatetext" width="400">
             		<td><input type="file" class="form-control" name="photo" placeholder="Enter photo"/></td>
             	</tr>
                 <tr>             

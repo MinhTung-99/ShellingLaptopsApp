@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -46,14 +46,14 @@ public class LaptopController {
 	
 	//-------------ORDER----------------------
 	@RequestMapping("/orderpage")
-	public String viewStorePage(Model model) {
+	public String viewOrderPage(Model model) {
 		List<Order> orders = service.getOrders();
 		model.addAttribute("orders", orders);
 		
 		return "order";
 	}
 	@RequestMapping("/deleteorder/{id}")
-	public String deleteStore(@PathVariable(name = "id") Long orderId) {
+	public String deleteOrder(@PathVariable(name = "id") Long orderId) {
 	    service.deleteOrder(orderId);
 	    return "redirect:/orderpage";   
 	}
@@ -78,8 +78,22 @@ public class LaptopController {
 	    
 	    if(!photo.isEmpty()) {
 	    	Path path = Paths.get("src/main/resources/static/images/");
+	    	
+	    	if(this.laptop.getImage() != null) {
+		    	File file = new File("src/main/resources/static" + this.laptop.getImage());
+			    file.delete();	
+	    	}
+	    	
+	    	String str = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
+			String s[] = str.split("/");
+			String url = "";
+			s[0]+= "//";
+			for(int i = 0; i < s.length-1; i++) {
+				System.out.println(s[i] + "-");
+				url += s[i];
+			}
 			
-			try {
+		    try {
 				InputStream inputStream = photo.getInputStream();
 				Files.copy(inputStream, path.resolve(photo.getOriginalFilename()),
 						StandardCopyOption.REPLACE_EXISTING);
@@ -88,18 +102,22 @@ public class LaptopController {
 				e.printStackTrace();
 			}
 			 
-			laptop.setImage("images/" + photo.getOriginalFilename());
+			laptop.setImage("/images/" + photo.getOriginalFilename());
+			laptop.setImageUrl(url+"/getimage/"+photo.getOriginalFilename());
+	    }else {
+			laptop.setImage(this.laptop.getImage());
+			laptop.setImageUrl(this.laptop.getImageUrl());
 	    }
 	    
 	    service.saveLaptop(laptop);
 	     
 	    return "redirect:/laptoppage";
 	}
-	
+	private Laptop laptop = new Laptop(); //getLaptop to delete when update
 	@RequestMapping("/editlaptop/{id}")
 	public ModelAndView editLaptop(@PathVariable(name = "id") Long id) {
 	    ModelAndView mav = new ModelAndView("edit_laptop");
-	    Laptop laptop = service.getLaptop(id);
+	    laptop = service.getLaptop(id);
 	    mav.addObject("laptop", laptop);
 	     
 	    return mav;
@@ -108,8 +126,7 @@ public class LaptopController {
 	@RequestMapping("/deletelaptop/{id}")
 	public String deleteLaptop(@PathVariable(name = "id") Long id) {
 	    Laptop laptop = service.getLaptop(id);
-	    System.out.println(laptop.getImage());
-	    File file = new File("src/main/resources/static/" + laptop.getImage());
+	    File file = new File("src/main/resources/static" + laptop.getImage());
 	    file.delete();
 	    service.deleteLaptop(id);
 	    

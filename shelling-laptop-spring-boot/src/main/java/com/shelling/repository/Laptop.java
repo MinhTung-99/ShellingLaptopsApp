@@ -21,12 +21,12 @@ public class Laptop {
 	private String ram;
 	private String display;
 	private String image;
+	private String imageUrl;
 	private String weight;
 	private String color;
 	private String os;
 	private String pin;
 	private float price;
-	private Long count;
 	
 	public Laptop() {}
 	
@@ -120,11 +120,11 @@ public class Laptop {
 		this.price = price;
 	}
 
-	public Long getCount() {
-		return count;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setCount(Long count) {
-		this.count = count;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }
