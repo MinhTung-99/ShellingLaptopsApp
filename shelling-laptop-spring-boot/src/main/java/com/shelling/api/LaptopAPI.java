@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shelling.repository.Laptop;
+import com.shelling.repository.LaptopArray;
 import com.shelling.repository.Order;
 import com.shelling.service.LaptopService;
 
@@ -20,8 +21,10 @@ public class LaptopApi {
 	private LaptopService service;
 	
 	@GetMapping("/laptop")
-	public List<Laptop> showLaptop() {
-		return service.getLaptops();
+	public LaptopArray showLaptop() {
+		LaptopArray laptopArr = new LaptopArray();
+		laptopArr.setLaptops(service.getLaptops());
+		return laptopArr;
 	}
 	
 	@PostMapping("/neworder")
