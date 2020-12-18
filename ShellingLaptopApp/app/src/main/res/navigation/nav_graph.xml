@@ -14,5 +14,13 @@
     <fragment
         android:id="@+id/laptopDetailFragment"
         android:name="com.shellinglaptop.fragment.LaptopDetailFragment"
-        android:label="LaptopDetailFragment" />
+        android:label="LaptopDetailFragment" >
+        <action
+            android:id="@+id/action_laptopDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.shellinglaptop.fragment.CartFragment"
+        android:label="CartFragment" />
 </navigation>

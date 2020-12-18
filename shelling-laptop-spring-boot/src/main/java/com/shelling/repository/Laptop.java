@@ -26,7 +26,7 @@ public class Laptop {
 	private String color;
 	private String os;
 	private String pin;
-	private float price;
+	private Long price;
 	
 	public Laptop() {}
 	
@@ -113,10 +113,10 @@ public class Laptop {
 	public void setPin(String pin) {
 		this.pin = pin;
 	}
-	public float getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 

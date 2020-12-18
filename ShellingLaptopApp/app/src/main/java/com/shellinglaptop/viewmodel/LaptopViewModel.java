@@ -5,7 +5,9 @@ import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
+import com.shellinglaptop.R;
 import com.shellinglaptop.model.LaptopList;
 import com.shellinglaptop.network.LaptopApi;
 import com.shellinglaptop.network.RetrofitInstance;
@@ -28,6 +30,7 @@ public class LaptopViewModel extends ViewModel {
 
     public void moveCartFragment(View view){
         Log.d("KMGH", "Clicked Cart");
+        Navigation.findNavController(view).navigate(R.id.cartFragment);
     }
 
     public void laptopApiCall(){

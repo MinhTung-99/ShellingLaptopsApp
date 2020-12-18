@@ -1,58 +1,91 @@
 package com.shellinglaptop.model;
 
 import androidx.databinding.Bindable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Laptop {
+import java.io.Serializable;
+
+// room: @ColumnInfo
+
+public class Laptop implements Serializable {
 
     @SerializedName("laptopId")
     @Expose
     private Long laptopId;
+
     @SerializedName("brand")
     @Expose
+    @ColumnInfo(name = "bard")
     private String brand;
+
     @SerializedName("name")
     @Expose
+    @ColumnInfo(name = "name")
     private String name;
+
     @SerializedName("cpu")
     @Expose
+    @ColumnInfo(name = "cpu")
     private String cpu;
+
     @SerializedName("cardGraphic")
     @Expose
+    @ColumnInfo(name = "cardGraphic")
     private String cardGraphic;
+
     @SerializedName("hardDrive")
     @Expose
+    @ColumnInfo(name = "hardDrive")
     private String hardDrive;
+
     @SerializedName("ram")
     @Expose
+    @ColumnInfo(name = "ram")
     private String ram;
+
     @SerializedName("display")
     @Expose
+    @ColumnInfo(name = "display")
     private String display;
+
     @SerializedName("image")
     @Expose
+    @ColumnInfo(name = "image")
     private String image;
+
     @SerializedName("imageUrl")
     @Expose
+    @ColumnInfo(name = "imageUrl")
     private String imageUrl;
     @SerializedName("weight")
     @Expose
+    @ColumnInfo(name = "weight")
     private String weight;
+
     @SerializedName("color")
     @Expose
+    @ColumnInfo(name = "color")
     private String color;
+
     @SerializedName("os")
     @Expose
+    @ColumnInfo(name = "os")
     private String os;
+
     @SerializedName("pin")
     @Expose
+    @ColumnInfo(name = "pin")
     private String pin;
 
     @SerializedName("price")
     @Expose
-    private float price;
+    @ColumnInfo(name = "price")
+    private Long price;
 
     public Laptop() {}
 
@@ -83,18 +116,15 @@ public class Laptop {
     public String getCardGraphic() {
         return cardGraphic;
     }
-
     public void setCardGraphic(String cardGraphic) {
         this.cardGraphic = cardGraphic;
     }
-
     public String getHardDrive() {
         return hardDrive;
     }
     public void setHardDrive(String hardDrive) {
         this.hardDrive = hardDrive;
     }
-
     public String getRam() {
         return ram;
     }
@@ -137,10 +167,10 @@ public class Laptop {
     public void setPin(String pin) {
         this.pin = pin;
     }
-    public float getPrice() {
+    public Long getPrice() {
         return price;
     }
-    public void setPrice(float price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
     public String getImageUrl() {

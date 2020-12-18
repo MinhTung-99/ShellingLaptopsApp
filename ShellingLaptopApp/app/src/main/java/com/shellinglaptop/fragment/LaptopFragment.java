@@ -29,7 +29,6 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
 
     private LaptopViewModel viewModel;
     private FragmentLaptopBinding binding;
-    private RecyclerView recyclerView;
     private LaptopAdapter adapter;
     private List<Laptop> laptops;
 
@@ -44,43 +43,34 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        addView(view);
+        laptops = new ArrayList<>();
         setAdapter();
 
         viewModel = new ViewModelProvider(this).get(LaptopViewModel.class);
         binding.setViewmodel(viewModel);
         viewModel.laptopApiCall();
-        viewModel.getLaptops().observe(getViewLifecycleOwner(), new Observer<LaptopList>() {
-            @Override
-            public void onChanged(LaptopList laptopList) {
-                if(laptopList != null){
-                    laptopList.getLaptops().get(0).setImageUrl("http://192.168.4.102:8080/getimage/Android.jpg");
-                    laptops = laptopList.getLaptops();
-                    adapter.setLaptops(laptops);
-                    Toast.makeText(getContext(),laptopList.getLaptops().get(0).getImageUrl(), Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getContext(),"NULL", Toast.LENGTH_SHORT).show();
-                }
+        viewModel.getLaptops().observe(getViewLifecycleOwner(), laptopList -> {
+            if(laptopList != null){
+                laptopList.getLaptops().get(0).setImageUrl("http://192.168.4.102:8080/getimage/Android.jpg");
+                laptops = laptopList.getLaptops();
+                adapter.setLaptops(laptops);
+            }else{
+                Toast.makeText(getContext(),"NULL", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void setAdapter() {
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        binding.rvLaptop.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new LaptopAdapter(laptops);
         adapter.setRecyclerViewLaptopClickListener(this);
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void addView(View view) {
-        recyclerView = view.findViewById(R.id.rv_laptop);
-        laptops = new ArrayList<>();
+        binding.rvLaptop.setAdapter(adapter);
     }
 
     @Override
     public void RecyclerViewLaptopItemClick(Laptop laptop) {
-        Toast.makeText(getContext(), laptop.getCardGraphic(), Toast.LENGTH_SHORT).show();
-
-        NavHostFragment.findNavController(this).navigate(R.id.laptopDetailFragment);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("laptop", laptop);
+        NavHostFragment.findNavController(this).navigate(R.id.laptopDetailFragment, bundle);
     }
 }
