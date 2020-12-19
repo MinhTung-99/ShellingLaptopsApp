@@ -36,6 +36,8 @@ import com.shelling.repository.Laptop;
 import com.shelling.repository.Order;
 import com.shelling.service.LaptopService;
 
+import util.PriceUtil;
+
 @Controller
 public class LaptopController {
 	
@@ -108,7 +110,10 @@ public class LaptopController {
 			laptop.setImage(this.laptop.getImage());
 			laptop.setImageUrl(this.laptop.getImageUrl());
 	    }
-	    
+	   	    
+		String setupPrice = PriceUtil.setupPrice(laptop.getPrice().toString());
+		laptop.setPriceStr(setupPrice + " VND");
+		
 	    service.saveLaptop(laptop);
 	     
 	    return "redirect:/laptoppage";

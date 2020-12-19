@@ -29,7 +29,6 @@ public class LaptopViewModel extends ViewModel {
     }
 
     public void moveCartFragment(View view){
-        Log.d("KMGH", "Clicked Cart");
         Navigation.findNavController(view).navigate(R.id.cartFragment);
     }
 
@@ -45,7 +44,6 @@ public class LaptopViewModel extends ViewModel {
             @Override
             public void onFailure(Call<LaptopList> call, Throwable t) {
                 laptops.postValue(null);
-                Log.e("KMHG", t.getMessage());
             }
         });
     }

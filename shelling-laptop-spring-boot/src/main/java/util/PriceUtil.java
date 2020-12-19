@@ -15,7 +15,17 @@ public class PriceUtil {
             }
         }
 
-        return new StringBuilder(setupPriceStr).reverse().toString();
+        String s = new StringBuilder(setupPriceStr).reverse().toString();
+        String priceStr = "";
+        if(s.charAt(0) == '.') {
+        	for(int i = 1; i < s.length(); i++) {
+        		priceStr += s.charAt(i);
+        	}
+        }else {
+        	return s;
+        }
+        
+        return priceStr;
     }
 	
 }

@@ -18,6 +18,7 @@ import com.shellinglaptop.databinding.FragmentCartBinding;
 import com.shellinglaptop.db.CartDao;
 import com.shellinglaptop.db.CartDatabase;
 import com.shellinglaptop.model.Cart;
+import com.shellinglaptop.model.Laptop;
 import com.shellinglaptop.viewmodel.CartViewModel;
 
 import java.util.ArrayList;
@@ -65,6 +66,8 @@ public class CartFragment extends Fragment implements CartAdapter.ButtonOnClickL
 
     @Override
     public void btnOrderOnClick(Cart cart) {
-        NavHostFragment.findNavController(this).navigate(R.id.orderFragment);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("cart", cart);
+        NavHostFragment.findNavController(this).navigate(R.id.orderFragment, bundle);
     }
 }

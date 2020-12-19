@@ -11,7 +11,7 @@ public class Order {
 
     @SerializedName("laptopId")
     @Expose
-    private int laptopId;
+    private Long laptopId;
 
     @SerializedName("name")
     @Expose
@@ -29,18 +29,16 @@ public class Order {
     @Expose
     private int count;
 
-    @SerializedName("price")
+    @SerializedName("priceStr")
     @Expose
-    private int price;
+    private String priceStr;
 
-    public Order() {}
-
-    public Order(int laptopId, String name, String address, String phone, int count, int price) {
+        public Order(Long laptopId, String name, String address, String phone, int count, String priceStr) {
         this.laptopId = laptopId;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.count = count;
-        this.price = price;
+        this.priceStr = priceStr;
     }
 }

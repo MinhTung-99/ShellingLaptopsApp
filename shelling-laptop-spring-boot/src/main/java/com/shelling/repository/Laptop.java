@@ -27,6 +27,7 @@ public class Laptop {
 	private String os;
 	private String pin;
 	private Long price;
+	private String priceStr;
 	
 	public Laptop() {}
 	
@@ -126,5 +127,13 @@ public class Laptop {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public String getPriceStr() {
+		return priceStr;
+	}
+
+	public void setPriceStr(String priceStr) {
+		this.priceStr = priceStr;
 	}
 }

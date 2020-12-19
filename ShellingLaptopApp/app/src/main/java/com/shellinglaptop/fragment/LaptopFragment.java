@@ -1,6 +1,7 @@
 package com.shellinglaptop.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,6 +26,7 @@ import com.shellinglaptop.viewmodel.LaptopViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerViewLaptopClickListener {
 
@@ -43,7 +46,7 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        laptops = new ArrayList<>();
+        viewGone();
         setAdapter();
 
         viewModel = new ViewModelProvider(this).get(LaptopViewModel.class);
@@ -51,6 +54,9 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
         viewModel.laptopApiCall();
         viewModel.getLaptops().observe(getViewLifecycleOwner(), laptopList -> {
             if(laptopList != null){
+                viewVisible();
+                binding.progressBar.setVisibility(View.GONE);
+
                 laptopList.getLaptops().get(0).setImageUrl("http://192.168.4.102:8080/getimage/Android.jpg");
                 laptops = laptopList.getLaptops();
                 adapter.setLaptops(laptops);
@@ -58,13 +64,37 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
                 Toast.makeText(getContext(),"NULL", Toast.LENGTH_SHORT).show();
             }
         });
+
+        binding.searchLaptop.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                return true;
+            }
+        });
     }
 
     private void setAdapter() {
+        laptops = new ArrayList<>();
         binding.rvLaptop.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new LaptopAdapter(laptops);
         adapter.setRecyclerViewLaptopClickListener(this);
         binding.rvLaptop.setAdapter(adapter);
+    }
+
+    private void viewVisible(){
+        binding.searchLaptop.setVisibility(View.VISIBLE);
+        binding.imgCart.setVisibility(View.VISIBLE);
+    }
+
+    private void viewGone(){
+        binding.searchLaptop.setVisibility(View.GONE);
+        binding.imgCart.setVisibility(View.GONE);
     }
 
     @Override

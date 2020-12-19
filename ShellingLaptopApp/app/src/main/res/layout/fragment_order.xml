@@ -14,25 +14,25 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edt_full_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Họ và tên"
+            android:afterTextChanged="@{(name) -> viewmodel.afterNameChange(name)}"
             android:paddingVertical="20dp"/>
 
         <EditText
-            android:id="@+id/edt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Địa chỉ"/>
+            android:hint="Địa chỉ"
+            android:afterTextChanged="@{(address) -> viewmodel.afterAddressChange(address)}"/>
 
         <EditText
-            android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số điện thoại"
             android:paddingVertical="20dp"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:afterTextChanged="@{(phone) -> viewmodel.afterPhoneChange(phone)}"/>
 
         <Button
             android:id="@+id/btn_order"

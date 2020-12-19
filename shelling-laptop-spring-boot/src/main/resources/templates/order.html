@@ -61,7 +61,7 @@
 								        		<td th:text="${order.address}"/>
 								        		<td th:text="${order.phone}"/>
 								        		<td th:text="${order.count}"/>
-								        		<td th:text="${order.price}"/>
+								        		<td th:text="${order.priceStr}"/>
 								        		<td>
 								                    <a th:href="@{'/deleteorder/' + ${order.orderId}}">Delete</a>
 								                </td>

@@ -1,5 +1,6 @@
 package com.shellinglaptop.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,23 +14,28 @@ import com.shellinglaptop.databinding.ItemLaptopBinding;
 import com.shellinglaptop.model.Laptop;
 import com.shellinglaptop.utils.PriceUtils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.LaptopViewHolder>{
 
     private List<Laptop> laptops;
     private RecyclerViewLaptopClickListener recyclerViewLaptopClickListener;
+    private List<Laptop> searchLaptop;
 
     public void setRecyclerViewLaptopClickListener(RecyclerViewLaptopClickListener recyclerViewLaptopClickListener) {
         this.recyclerViewLaptopClickListener = recyclerViewLaptopClickListener;
     }
 
     public LaptopAdapter(List<Laptop> laptops) {
+        searchLaptop = new ArrayList<>();
         this.laptops = laptops;
     }
 
     public void setLaptops(List<Laptop> laptops){
         this.laptops = laptops;
+        searchLaptop.addAll(laptops);
         notifyDataSetChanged();
     }
 
@@ -43,20 +49,30 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.LaptopView
 
     @Override
     public void onBindViewHolder(@NonNull LaptopViewHolder holder, int position) {
-        String setupPrice = PriceUtils.setupPrice(laptops.get(position).getPrice().toString());
-        laptops.get(position).setPriceStr(setupPrice + " VND");
         holder.itemLaptopBinding.setLaptop(laptops.get(position));
-        holder.itemLaptopBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.recyclerViewLaptopClickListener.RecyclerViewLaptopItemClick(laptops.get(position));
-            }
-        });
+        holder.itemLaptopBinding.getRoot().setOnClickListener(v ->
+                holder.recyclerViewLaptopClickListener.RecyclerViewLaptopItemClick(laptops.get(position)));
     }
 
     @Override
     public int getItemCount() {
         return laptops.size();
+    }
+
+    public void filter(String text){
+        String myText = text.toLowerCase(Locale.getDefault());
+        laptops.clear();
+        if(myText.isEmpty()){
+            laptops.addAll(searchLaptop);
+        }else {
+            for(Laptop laptop : searchLaptop){
+                if(laptop.getName().toLowerCase(Locale.getDefault()).contains(myText)){
+                    laptops.add(laptop);
+                }
+            }
+        }
+
+        notifyDataSetChanged();
     }
 
     class LaptopViewHolder extends RecyclerView.ViewHolder {

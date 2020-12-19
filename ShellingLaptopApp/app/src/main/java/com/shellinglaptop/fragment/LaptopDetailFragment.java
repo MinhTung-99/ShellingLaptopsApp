@@ -41,8 +41,8 @@ public class LaptopDetailFragment extends Fragment {
         viewModel.setLaptops(laptop);
         viewModel.setContext(getContext());
 
-        viewModel.getCount().observe(getViewLifecycleOwner(), integer -> {
-            binding.txtCount.setText(integer+"");
+        viewModel.getCount().observe(getViewLifecycleOwner(), count -> {
+            binding.txtCount.setText(count.toString());
         });
     }
 }

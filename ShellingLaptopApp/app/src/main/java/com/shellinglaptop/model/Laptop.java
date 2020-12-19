@@ -87,6 +87,8 @@ public class Laptop implements Serializable {
     @ColumnInfo(name = "price")
     private Long price;
 
+    @SerializedName("priceStr")
+    @Expose
     private String priceStr;
 
     public Laptop() {}

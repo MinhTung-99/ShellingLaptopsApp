@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View" />
         <variable
             name="viewmodel"
             type="com.shellinglaptop.viewmodel.LaptopViewModel" />
@@ -80,7 +79,6 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:visibility="gone"
             android:theme="@style/Theme.ShellingLaptopApp.WhiteAccent"/>
 
         <androidx.recyclerview.widget.RecyclerView
