@@ -18,7 +18,7 @@ import com.shellinglaptop.model.Laptop;
 public class LaptopDetailViewModel extends ViewModel {
 
     private MutableLiveData<Integer> count;
-    private int _count = 0;
+    private int _count = 1;
     private Laptop laptop;
     private Context context;
 
@@ -49,8 +49,8 @@ public class LaptopDetailViewModel extends ViewModel {
 
     public void txtReductionOnClick(View view){
         _count--;
-        if(_count < 0){
-            _count = 0;
+        if(_count < 1){
+            _count = 1;
         }
         count.postValue(_count);
     }
@@ -58,7 +58,6 @@ public class LaptopDetailViewModel extends ViewModel {
     public void btnAddCartOnClick(View view){
         CartDao cartDao = CartDatabase.getInstance(context).cartDao();
         Cart cart = new Cart();
-
         cart.setCart(laptop, cart);
         cart.setCount(count.getValue());
         cart.setTotalMoney(laptop.getPrice()*count.getValue());

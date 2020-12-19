@@ -57,7 +57,6 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
                 viewVisible();
                 binding.progressBar.setVisibility(View.GONE);
 
-                laptopList.getLaptops().get(0).setImageUrl("http://192.168.4.102:8080/getimage/Android.jpg");
                 laptops = laptopList.getLaptops();
                 adapter.setLaptops(laptops);
             }else{

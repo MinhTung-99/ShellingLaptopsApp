@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
-import java.util.concurrent.TimeUnit;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -18,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Animation ani = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation);
+        Animation ani = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ani_splash);
         findViewById(R.id.txt_animation).startAnimation(ani);
 
         Handler handler = new Handler();

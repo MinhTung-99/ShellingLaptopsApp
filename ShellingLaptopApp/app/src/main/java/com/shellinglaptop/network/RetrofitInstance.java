@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
-    public static String BASE_URL = "http://192.168.100.6:8080/";
+    public static String BASE_URL = "https://shellinglaptop.herokuapp.com/";
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitClient(){

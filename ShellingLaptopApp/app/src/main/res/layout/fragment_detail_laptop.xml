@@ -304,7 +304,7 @@
                         android:id="@+id/txt_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Số lượng đặt mua:"
+                        android:text="Số lượng:"
                         android:paddingHorizontal="10dp"
                         android:textSize="18sp"
                         android:layout_centerVertical="true"
@@ -381,11 +381,11 @@
                 </RelativeLayout>
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/ic_add_shopping_cart"
+                    android:background="@drawable/ic_add_cart"
                     android:onClick="@{viewModel :: btnAddCartOnClick}"
                     android:layout_gravity="center_horizontal"/>
 

@@ -19,117 +19,112 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingVertical="10dp"
             android:paddingHorizontal="10dp">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 imageUrl="@{cart.imageUrl}"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cart.name}"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{cart.name}"
+                    android:text="Giá: "
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:textColor="#000000"/>
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="@{cart.priceStr}"
+                    android:textSize="17sp"
+                    android:textColor="#ff0000"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giá: "
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:textColor="#000000"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{cart.priceStr}"
-                        android:textSize="17sp"
-                        android:textColor="#ff0000"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="Số lượng: "
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Số lượng: "
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:textColor="#000000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cart.count)}"
-                        android:textSize="17sp"
-                        android:textColor="#ff0000"/>
-
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="@{String.valueOf(cart.count)}"
+                    android:textSize="17sp"
+                    android:textColor="#ff0000"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Thành tiền: "
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:textColor="#000000"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{cart.totalMoneyStr}"
-                        android:textSize="17sp"
-                        android:textColor="#ff0000"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:text="Thành tiền: "
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
 
-                    <Button
-                        android:id="@+id/btn_order"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Đặt hàng"
-                        android:background="@drawable/custom_button" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{cart.totalMoneyStr}"
+                    android:textSize="17sp"
+                    android:textColor="#ff0000"/>
 
-                    <Button
-                        android:id="@+id/btn_delete"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Xoá"
-                        android:background="@drawable/custom_button"
-                        android:layout_marginLeft="20dp"/>
+            </LinearLayout>
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btn_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đặt hàng"
+                    android:background="@drawable/custom_button" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xoá"
+                    android:background="@drawable/custom_button"
+                    android:layout_marginLeft="20dp"/>
 
             </LinearLayout>
 
