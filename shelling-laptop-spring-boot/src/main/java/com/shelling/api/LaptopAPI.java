@@ -28,17 +28,7 @@ public class LaptopApi {
 	}
 	
 	@PostMapping("/neworder")
-	public boolean newOrder(@RequestBody Order order) {
-		List<Laptop> laptops = service.getLaptops();
-		for(int j = 0; j < laptops.size(); j++) {
-			if(order.getLaptopId() == laptops.get(j).getLaptopId()) {
-				order.setPrice(order.getCount() * laptops.get(j).getPrice());
-			}
-		}
-		
-		if(service.saveOrder(order) != null)
-			return true;
-		
-		return false;
+	public Order newOrder(@RequestBody Order order) {
+		return service.saveOrder(order);
 	}
 }

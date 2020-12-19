@@ -16,6 +16,8 @@ public class Cart extends Laptop{
     @ColumnInfo(name = "totalMoney")
     private Long totalMoney;
 
+    private String totalMoneyStr;
+
     public Long getCartId() {
         return cartId;
     }
@@ -40,9 +42,18 @@ public class Cart extends Laptop{
         this.totalMoney = totalMoney;
     }
 
+    public String getTotalMoneyStr() {
+        return totalMoneyStr;
+    }
+
+    public void setTotalMoneyStr(String totalMoneyStr) {
+        this.totalMoneyStr = totalMoneyStr;
+    }
+
     public void setCart(Laptop laptop, Cart cart){
         cart.setName(laptop.getName());
         cart.setImageUrl(laptop.getImageUrl());
         cart.setPrice(laptop.getPrice());
+        cart.setPriceStr(laptop.getPriceStr());
     }
 }

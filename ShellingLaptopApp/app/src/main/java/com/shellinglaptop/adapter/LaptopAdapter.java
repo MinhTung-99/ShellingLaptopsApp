@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shellinglaptop.R;
 import com.shellinglaptop.databinding.ItemLaptopBinding;
 import com.shellinglaptop.model.Laptop;
+import com.shellinglaptop.utils.PriceUtils;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.LaptopView
 
     @Override
     public void onBindViewHolder(@NonNull LaptopViewHolder holder, int position) {
+        String setupPrice = PriceUtils.setupPrice(laptops.get(position).getPrice().toString());
+        laptops.get(position).setPriceStr(setupPrice + " VND");
         holder.itemLaptopBinding.setLaptop(laptops.get(position));
         holder.itemLaptopBinding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override

@@ -58,7 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cart.price)}"
+                        android:text="@{cart.priceStr}"
                         android:textSize="17sp"
                         android:textColor="#ff0000"/>
 
@@ -102,7 +102,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(cart.totalMoney)}"
+                        android:text="@{cart.totalMoneyStr}"
                         android:textSize="17sp"
                         android:textColor="#ff0000"/>
 
@@ -119,7 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Đặt hàng"
-                        android:background="#ffa500" />
+                        android:background="@drawable/custom_button" />
 
                     <Button
                         android:id="@+id/btn_delete"

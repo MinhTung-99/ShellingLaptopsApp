@@ -17,7 +17,7 @@ public class Order {
 	private String address;
 	private String phone;
 	private Long count;
-	private float price;
+	private Long price;
 	
 	public Order() {}
 
@@ -69,11 +69,11 @@ public class Order {
 		this.count = count;
 	}
 
-	public float getPrice() {
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 }

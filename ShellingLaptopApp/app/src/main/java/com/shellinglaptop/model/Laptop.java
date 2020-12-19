@@ -87,6 +87,8 @@ public class Laptop implements Serializable {
     @ColumnInfo(name = "price")
     private Long price;
 
+    private String priceStr;
+
     public Laptop() {}
 
     public Long getLaptopId() {
@@ -178,5 +180,11 @@ public class Laptop implements Serializable {
     }
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    public String getPriceStr() {
+        return priceStr;
+    }
+    public void setPriceStr(String priceStr) {
+        this.priceStr = priceStr;
     }
 }

@@ -22,5 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers("/deleteorder/{id}").authenticated()
         .and()
         .formLogin();
+		
+		http.csrf().disable();
 	}
 }
