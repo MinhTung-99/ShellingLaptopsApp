@@ -19,8 +19,10 @@ public class SplashActivity extends AppCompatActivity {
         findViewById(R.id.txt_animation).startAnimation(ani);
 
         Handler handler = new Handler();
-        final Runnable r = () ->
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        final Runnable r = () ->{
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        };
         handler.postDelayed(r, 3000);
     }
 }
