@@ -9,8 +9,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-// room: @ColumnInfo
+import okhttp3.MultipartBody;
 
 public class Laptop implements Serializable {
 
@@ -18,80 +20,33 @@ public class Laptop implements Serializable {
     @Expose
     private Long laptopId;
 
-    @SerializedName("brand")
-    @Expose
-    @ColumnInfo(name = "bard")
-    private String brand;
-
     @SerializedName("name")
     @Expose
     @ColumnInfo(name = "name")
     private String name;
-
-    @SerializedName("cpu")
-    @Expose
-    @ColumnInfo(name = "cpu")
-    private String cpu;
-
-    @SerializedName("cardGraphic")
-    @Expose
-    @ColumnInfo(name = "cardGraphic")
-    private String cardGraphic;
-
-    @SerializedName("hardDrive")
-    @Expose
-    @ColumnInfo(name = "hardDrive")
-    private String hardDrive;
-
-    @SerializedName("ram")
-    @Expose
-    @ColumnInfo(name = "ram")
-    private String ram;
-
-    @SerializedName("display")
-    @Expose
-    @ColumnInfo(name = "display")
-    private String display;
 
     @SerializedName("image")
     @Expose
     @ColumnInfo(name = "image")
     private String image;
 
-    @SerializedName("imageUrl")
-    @Expose
-    @ColumnInfo(name = "imageUrl")
-    private String imageUrl;
-    @SerializedName("weight")
-    @Expose
-    @ColumnInfo(name = "weight")
-    private String weight;
-
-    @SerializedName("color")
-    @Expose
-    @ColumnInfo(name = "color")
-    private String color;
-
-    @SerializedName("os")
-    @Expose
-    @ColumnInfo(name = "os")
-    private String os;
-
-    @SerializedName("pin")
-    @Expose
-    @ColumnInfo(name = "pin")
-    private String pin;
-
     @SerializedName("price")
     @Expose
     @ColumnInfo(name = "price")
     private Long price;
 
-    @SerializedName("priceStr")
+    @SerializedName("sale")
     @Expose
-    private String priceStr;
+    private String sale;
 
-    public Laptop() {}
+    @SerializedName("description")
+    @Expose
+    private String description;
+
+    private String typeUpdate;
+//    @SerializedName("priceStr")
+//    @Expose
+//    private String priceStr;
 
     public Long getLaptopId() {
         return laptopId;
@@ -99,47 +54,17 @@ public class Laptop implements Serializable {
     public void setLaptopId(Long laptopId) {
         this.laptopId = laptopId;
     }
-    public String getBrand() {
-        return brand;
-    }
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+//    public String getPriceStr() {
+//        return priceStr;
+//    }
+//    public void setPriceStr(String priceStr) {
+//        this.priceStr = priceStr;
+//    }
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public String getCpu() {
-        return cpu;
-    }
-    public void setCpu(String cpu) {
-        this.cpu = cpu;
-    }
-    public String getCardGraphic() {
-        return cardGraphic;
-    }
-    public void setCardGraphic(String cardGraphic) {
-        this.cardGraphic = cardGraphic;
-    }
-    public String getHardDrive() {
-        return hardDrive;
-    }
-    public void setHardDrive(String hardDrive) {
-        this.hardDrive = hardDrive;
-    }
-    public String getRam() {
-        return ram;
-    }
-    public void setRam(String ram) {
-        this.ram = ram;
-    }
-    public String getDisplay() {
-        return display;
-    }
-    public void setDisplay(String display) {
-        this.display = display;
     }
     public String getImage() {
         return image;
@@ -147,46 +72,28 @@ public class Laptop implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-    public String getWeight() {
-        return weight;
-    }
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
-    public String getOs() {
-        return os;
-    }
-    public void setOs(String os) {
-        this.os = os;
-    }
-    public String getPin() {
-        return pin;
-    }
-    public void setPin(String pin) {
-        this.pin = pin;
-    }
     public Long getPrice() {
         return price;
     }
     public void setPrice(Long price) {
         this.price = price;
     }
-    public String getImageUrl() {
-        return imageUrl;
+    public String getSale() {
+        return sale;
     }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setSale(String sale) {
+        this.sale = sale;
     }
-    public String getPriceStr() {
-        return priceStr;
+    public String getDescription() {
+        return description;
     }
-    public void setPriceStr(String priceStr) {
-        this.priceStr = priceStr;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getTypeUpdate() {
+        return typeUpdate;
+    }
+    public void setTypeUpdate(String typeUpdate) {
+        this.typeUpdate = typeUpdate;
     }
 }

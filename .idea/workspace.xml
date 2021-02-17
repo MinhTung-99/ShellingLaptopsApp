@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b0e733af-236b-4ce9-9769-8c1888d2b7e7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/api/LaptopAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/api/LaptopAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/controller/LaptopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/controller/LaptopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/Laptop.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/entity/Laptop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/LaptopArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/LaptopArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/LaptopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/LaptopRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/security/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/service/LaptopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/java/com/shelling/service/LaptopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/webapp/template/admin/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/static/js/all.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/webapp/template/admin/js/all.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/static/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/webapp/template/admin/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/static/js/jquery-3.5.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/webapp/template/admin/js/jquery-3.5.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/static/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/webapp/template/admin/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shelling-laptop-spring-boot/src/main/resources/templates/laptop.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1oSREzlMfxUOtJvIyluZl8RYbu1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b0e733af-236b-4ce9-9769-8c1888d2b7e7" name="Default Changelist" comment="" />
+      <created>1613277898219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613277898219</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -13,32 +13,18 @@ public class Order {
     @Expose
     private Long laptopId;
 
-    @SerializedName("name")
+    @SerializedName("laptop")
     @Expose
-    private String name;
+    private Laptop laptop;
 
-    @SerializedName("address")
+    @SerializedName("userid")
     @Expose
-    private String address;
-
-    @SerializedName("phone")
-    @Expose
-    private String phone;
+    private User user;
 
     @SerializedName("count")
     @Expose
-    private int count;
+    private Long count;
 
-    @SerializedName("priceStr")
-    @Expose
+
     private String priceStr;
-
-        public Order(Long laptopId, String name, String address, String phone, int count, String priceStr) {
-        this.laptopId = laptopId;
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
-        this.count = count;
-        this.priceStr = priceStr;
-    }
 }

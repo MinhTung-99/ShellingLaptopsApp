@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.shellinglaptop"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -65,4 +65,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
+
+    //swipe layout
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 }

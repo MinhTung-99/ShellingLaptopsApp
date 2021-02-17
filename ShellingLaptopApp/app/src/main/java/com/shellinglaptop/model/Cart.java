@@ -53,8 +53,8 @@ public class Cart extends Laptop{
     public void setCart(Laptop laptop, Cart cart){
         cart.setLaptopId(laptop.getLaptopId());
         cart.setName(laptop.getName());
-        cart.setImageUrl(laptop.getImageUrl());
+
         cart.setPrice(laptop.getPrice());
-        cart.setPriceStr(laptop.getPriceStr());
+
     }
 }

@@ -21,24 +21,18 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                imageUrl="@{laptop.imageUrl}"
-                android:layout_gravity="center_horizontal"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{laptop.name}"
                 android:textSize="17sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{laptop.priceStr}"
-                android:textColor="#ff0000"
-                android:textSize="17sp"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@{laptop.priceStr}"-->
+<!--                android:textColor="#ff0000"-->
+<!--                android:textSize="17sp"/>-->
 
         </LinearLayout>
 

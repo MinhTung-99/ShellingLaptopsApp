@@ -100,6 +100,6 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
     public void RecyclerViewLaptopItemClick(Laptop laptop) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("laptop", laptop);
-        NavHostFragment.findNavController(this).navigate(R.id.laptopDetailFragment, bundle);
+      //  NavHostFragment.findNavController(this).navigate(R.id.laptopDetailFragment, bundle);
     }
 }

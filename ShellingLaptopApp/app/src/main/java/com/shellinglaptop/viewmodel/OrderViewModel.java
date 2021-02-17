@@ -34,18 +34,18 @@ public class OrderViewModel extends ViewModel {
 
     public void btnOderOnClick(View view){
         LaptopApi laptopApi = RetrofitInstance.getRetrofitClient().create(LaptopApi.class);
-        Order order = new Order(cart.getLaptopId(),name,address,phone,cart.getCount(),cart.getTotalMoneyStr());
-        laptopApi.setOrder(order).enqueue(new Callback<Order>() {
-            @Override
-            public void onResponse(Call<Order> call, Response<Order> response) {
-                isSetOrder.postValue(true);
-            }
-
-            @Override
-            public void onFailure(Call<Order> call, Throwable t) {
-                isSetOrder.postValue(false);
-            }
-        });
+//        Order order = new Order(cart.getLaptopId(),name,address,phone,cart.getCount(),cart.getTotalMoneyStr());
+//        laptopApi.setOrder(order).enqueue(new Callback<Order>() {
+//            @Override
+//            public void onResponse(Call<Order> call, Response<Order> response) {
+//                isSetOrder.postValue(true);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Order> call, Throwable t) {
+//                isSetOrder.postValue(false);
+//            }
+//        });
     }
 
     public void afterNameChange(CharSequence s){

@@ -29,22 +29,22 @@ public class LaptopViewModel extends ViewModel {
     }
 
     public void moveCartFragment(View view){
-        Navigation.findNavController(view).navigate(R.id.cartFragment);
+       // Navigation.findNavController(view).navigate(R.id.cartFragment);
     }
 
     public void laptopApiCall(){
         LaptopApi laptopApi = RetrofitInstance.getRetrofitClient().create(LaptopApi.class);
-        Call<LaptopList> call = laptopApi.getLaptops();
-        call.enqueue(new Callback<LaptopList>() {
-            @Override
-            public void onResponse(Call<LaptopList> call, Response<LaptopList> response) {
-                laptops.postValue(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<LaptopList> call, Throwable t) {
-                laptops.postValue(null);
-            }
-        });
+//        Call<LaptopList> call = laptopApi.getLaptops();
+//        call.enqueue(new Callback<LaptopList>() {
+//            @Override
+//            public void onResponse(Call<LaptopList> call, Response<LaptopList> response) {
+//                laptops.postValue(response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<LaptopList> call, Throwable t) {
+//                laptops.postValue(null);
+//            }
+//        });
     }
 }
