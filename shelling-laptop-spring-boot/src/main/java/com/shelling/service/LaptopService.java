@@ -38,10 +38,6 @@ public class LaptopService {
 //	public Laptop getLaptop(Long id) {
 //		return laptopRepository.findById(id).get();
 //	}
-//	
-//	public void deleteLaptop(Long id) {
-//		laptopRepository.deleteById(id);
-//	}
 	
 	//------------Order--------------------
 //	public List<Order> getOrders(){

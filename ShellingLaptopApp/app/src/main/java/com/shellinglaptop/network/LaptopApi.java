@@ -20,14 +20,12 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface LaptopApi {
-    @GET("laptop")
+    @GET("api-laptop")
     Call<LaptopList> getLaptops();
-    @POST("neworder")
-    Call<Order> setOrder(@Body Order order);
-    @POST("api-new-laptop")
-    Call<Void> saveLaptop(@Body Laptop laptop);
-    @PUT("/api-update-laptop/{laptopId}")
-    Call<ResponseBody> updateLaptop(@Body Laptop laptop, @Path("laptopId") Long laptopid);
-    @HTTP(method = "DELETE", path = "/delete", hasBody = true)
-    Call<Void> deleteLaptop(@Body Laptop laptop);
+    @POST("api-new-laptop/{userName}/{password}")
+    Call<Boolean> saveLaptop(@Body Laptop laptop, @Path("userName") String userName, @Path("password") String password);
+    @PUT("api-update-laptop/{laptopId}/{userName}/{password}")
+    Call<Boolean> updateLaptop(@Body Laptop laptop, @Path("laptopId") Long laptopid,@Path("userName") String userName, @Path("password") String password);
+    @HTTP(method = "DELETE", path = "delete/{userName}/{password}", hasBody = true)
+    Call<Void> deleteLaptop(@Body Laptop laptop, @Path("userName") String userName, @Path("password") String password);
 }

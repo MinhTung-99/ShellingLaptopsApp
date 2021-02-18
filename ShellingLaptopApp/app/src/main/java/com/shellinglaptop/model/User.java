@@ -9,11 +9,11 @@ import java.util.List;
 
 public class User {
 
-    @SerializedName("laptopid")
+    @SerializedName("userid")
     @Expose
     private Long userId;
 
-    @SerializedName("username")
+    @SerializedName("userName")
     @Expose
     private String userName;
 
@@ -21,19 +21,87 @@ public class User {
     @Expose
     private String password;
 
-    @SerializedName("fullname")
+    @SerializedName("fullName")
     @Expose
     private String fullName;
 
-    @SerializedName("phonenumber")
+    @SerializedName("phoneNumber")
     @Expose
     private Integer phoneNumber;
 
-    @SerializedName("createddate")
+    @SerializedName("createdDate")
     @Expose
     private Date createdDate;
 
-    @SerializedName("laptopid")
+    @SerializedName("typeUser")
+    @Expose
+    private String typeUser;
+
+    @SerializedName("orders")
     @Expose
     private List<Order> orders = new ArrayList<>();
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }

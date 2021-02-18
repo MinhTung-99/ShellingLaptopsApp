@@ -84,8 +84,10 @@ public class CartFragment extends Fragment implements CartAdapter.ButtonOnClickL
 
     @Override
     public void btnOrderOnClick(Cart cart) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("cart", cart);
-      //  NavHostFragment.findNavController(this).navigate(R.id.orderFragment, bundle);
+       // Bundle bundle = new Bundle();
+       // bundle.putSerializable("cart", cart);
+       // NavHostFragment.findNavController(this).navigate(R.id.orderFragment, bundle);
+
+
     }
 }

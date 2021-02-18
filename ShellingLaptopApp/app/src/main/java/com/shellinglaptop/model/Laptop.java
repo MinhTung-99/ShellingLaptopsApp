@@ -44,9 +44,9 @@ public class Laptop implements Serializable {
     private String description;
 
     private String typeUpdate;
-//    @SerializedName("priceStr")
-//    @Expose
-//    private String priceStr;
+
+    @ColumnInfo(name = "priceStr")
+    private String priceStr;
 
     public Long getLaptopId() {
         return laptopId;
@@ -54,12 +54,12 @@ public class Laptop implements Serializable {
     public void setLaptopId(Long laptopId) {
         this.laptopId = laptopId;
     }
-//    public String getPriceStr() {
-//        return priceStr;
-//    }
-//    public void setPriceStr(String priceStr) {
-//        this.priceStr = priceStr;
-//    }
+    public String getPriceStr() {
+        return priceStr;
+    }
+    public void setPriceStr(String priceStr) {
+        this.priceStr = priceStr;
+    }
     public String getName() {
         return name;
     }

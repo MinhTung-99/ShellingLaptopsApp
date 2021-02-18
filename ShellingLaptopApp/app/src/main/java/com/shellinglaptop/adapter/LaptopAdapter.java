@@ -49,6 +49,9 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.LaptopView
 
     @Override
     public void onBindViewHolder(@NonNull LaptopViewHolder holder, int position) {
+        laptops.get(position).setPriceStr(laptops.get(position).getPrice().toString());
+        String setupMoney = PriceUtils.setupPrice(laptops.get(position).getPriceStr());
+        laptops.get(position).setPriceStr(setupMoney +" VND");
         holder.itemLaptopBinding.setLaptop(laptops.get(position));
         holder.itemLaptopBinding.getRoot().setOnClickListener(v ->
                 holder.recyclerViewLaptopClickListener.RecyclerViewLaptopItemClick(laptops.get(position)));

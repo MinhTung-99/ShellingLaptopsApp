@@ -25,6 +25,7 @@ import com.shellinglaptop.network.LaptopApi;
 import com.shellinglaptop.network.RetrofitInstance;
 import com.shellinglaptop.utils.ClickUtils;
 import com.shellinglaptop.utils.ConstantUtils;
+import com.shellinglaptop.utils.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class LaptopAdminFragment extends Fragment implements ClickUtils.IRecycle
             Laptop laptop = new Laptop();
             laptop.setTypeUpdate(ConstantUtils.ADD);
             bundle.putSerializable("laptop", laptop);
-            NavHostFragment.findNavController(this).navigate(R.id.updateLaptopAdminFragment, bundle);
+            NavHostFragment.findNavController(this).navigate(R.id.updateOrAddLaptopAdminFragment, bundle);
         });
     }
 
@@ -88,13 +89,13 @@ public class LaptopAdminFragment extends Fragment implements ClickUtils.IRecycle
         Bundle bundle = new Bundle();
         laptop.setTypeUpdate(ConstantUtils.Update);
         bundle.putSerializable("laptop", laptop);
-        NavHostFragment.findNavController(this).navigate(R.id.updateLaptopAdminFragment, bundle);
+        NavHostFragment.findNavController(this).navigate(R.id.updateOrAddLaptopAdminFragment, bundle);
     }
 
     @Override
     public void btnDeleteItemClick(Laptop laptop) {
         LaptopApi laptopApi = RetrofitInstance.getRetrofitClient().create(LaptopApi.class);
-        laptopApi.deleteLaptop(laptop).enqueue(new Callback<Void>() {
+        laptopApi.deleteLaptop(laptop, UserUtils.userName, UserUtils.password).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){

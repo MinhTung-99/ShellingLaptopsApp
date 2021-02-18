@@ -26,17 +26,17 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/img_laptop"
+                    android:id="@+id/img_login"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_laptop" />
+                    android:src="@drawable/ic_login" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img_laptop">
+                    android:layout_toRightOf="@+id/img_login">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -64,12 +64,21 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+        <TextView
+            android:id="@+id/txt_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tool_bar"/>
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_laptop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
-            android:layout_below="@+id/tool_bar"
+            android:layout_below="@+id/txt_username"
             android:background="@drawable/custom_search_view"
             app:queryHint="Tìm laptop" />
 

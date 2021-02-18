@@ -21,33 +21,68 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.shelling.entity.Laptop;
 import com.shelling.entity.Order;
+import com.shelling.entity.User;
 import com.shelling.repository.LaptopArray;
 import com.shelling.service.LaptopService;
+import com.shelling.service.UserService;
+
+import util.PriceUtil;
 
 @RestController
 class LaptopApi {
 	
 	@Autowired
 	private LaptopService service;
+	@Autowired
+	private UserService userService;
 	
-	@GetMapping("/laptop")
+	@GetMapping("/api-laptop")
 	public LaptopArray showLaptop() {
 		LaptopArray laptopArr = new LaptopArray();
 		laptopArr.setLaptops(service.getLaptops());
 		return laptopArr;
 	}
-	@PostMapping(value = "/api-new-laptop")
-	public void saveLaptop(@RequestBody Laptop laptop ) {
-		service.saveLaptop(laptop);
+	@PostMapping(value = "/api-new-laptop/{userName}/{password}")
+	public boolean saveLaptop(@RequestBody Laptop laptop, 
+			@PathVariable("userName") String userName, @PathVariable("password") String password) {
+		User user = new User();
+		user.setUserName(userName);
+		user.setPassword(password);
+		String typeLogin = userService.login(user);
+		if(typeLogin.equals("ADMIN")) {
+			service.saveLaptop(laptop);
+			return true;
+		}
+		
+		return false;
 	}
-	@PutMapping(value = "/api-update-laptop/{laptopId}")
-	public void updateLaptop(@RequestBody Laptop laptop,  @PathVariable("laptopId") Long laptopid) {
+	@PutMapping(value = "/api-update-laptop/{laptopId}/{userName}/{password}")
+	public boolean updateLaptop(@RequestBody Laptop laptop,  @PathVariable("laptopId") Long laptopid,
+			@PathVariable("userName") String userName, @PathVariable("password") String password) {
 		laptop.setLaptopId(laptopid);
-		service.saveLaptop(laptop);
+		User user = new User();
+		user.setUserName(userName);
+		user.setPassword(password);
+		String typeLogin = userService.login(user);
+		if(typeLogin.equals("ADMIN")) {
+			service.saveLaptop(laptop);
+			return true;
+		}
+		return false;
 	}
-	@DeleteMapping(value = "/delete")
-	public void deleteNew(@RequestBody Laptop laptop) {
-		service.delete(laptop);
+	@DeleteMapping(value = "/delete/{userName}/{password}")
+	public boolean deleteNew(@RequestBody Laptop laptop,
+			@PathVariable("userName") String userName, @PathVariable("password") String password) {
+		User user = new User();
+		user.setUserName(userName);
+		user.setPassword(password);
+		String typeLogin = userService.login(user);
+		if(typeLogin.equals("ADMIN")) {
+			service.delete(laptop);
+			return true;
+		}
+		
+		return false;
 	}
 	
 //	@PostMapping("/neworder")

@@ -26,8 +26,6 @@ public class Laptop {
 	@Column
 	private String name;
 	
-	//private String image;
-	
 	@Lob
 	@Column
 	private String image;
@@ -40,8 +38,6 @@ public class Laptop {
 	
 	@Column
 	private String description;
-	
-	//private String priceStr;
 	
 	@OneToMany(mappedBy = "laptop")
 	private List<Order> orders = new ArrayList<Order>();
@@ -64,15 +60,6 @@ public class Laptop {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
-
-//	public String getPriceStr() {
-//		return priceStr;
-//	}
-//
-//	public void setPriceStr(String priceStr) {
-//		this.priceStr = priceStr;
-//	}
-	
 	public String getSale() {
 		return sale;
 	}

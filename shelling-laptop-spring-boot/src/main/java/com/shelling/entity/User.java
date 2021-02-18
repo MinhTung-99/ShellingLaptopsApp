@@ -36,6 +36,9 @@ public class User {
 	@Column(name = "createddate")
 	private Date createdDate;
 	
+	@Column(name = "typeuser")
+	private String typeUser;
+	
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders = new ArrayList<Order>();
 	
@@ -68,6 +71,12 @@ public class User {
 	}
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+	public String getTypeUser() {
+		return typeUser;
+	}
+	public void setTypeUser(String typeUser) {
+		this.typeUser = typeUser;
 	}
 	public List<Order> getOrders() {
 		return orders;

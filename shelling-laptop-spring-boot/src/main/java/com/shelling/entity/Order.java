@@ -28,50 +28,31 @@ public class Order {
 
 	@Column
 	private Long count;
-	
-	//private String priceStr;
-	
-	public Order() {}
 
 	public Long getOrderId() {
 		return orderId;
 	}
-
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
-	
 	public Laptop getLaptop() {
 		return laptop;
 	}
-
 	public void setLaptop(Laptop laptop) {
 		this.laptop = laptop;
 	}
-
 	public Long getCount() {
 		return count;
 	}
-
 	public void setCount(Long count) {
 		this.count = count;
 	}
-	
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-//	public String getPriceStr() {
-//		return priceStr;
-//	}
-//
-//	public void setPriceStr(String priceStr) {
-//		this.priceStr = priceStr;
-//	}
 
 //	public Long getUserId() {
 //		return userId;

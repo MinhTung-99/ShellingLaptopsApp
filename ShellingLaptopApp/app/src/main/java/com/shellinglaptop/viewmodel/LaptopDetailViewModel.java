@@ -63,6 +63,6 @@ public class LaptopDetailViewModel extends ViewModel {
         cart.setTotalMoney(laptop.getPrice()*count.getValue());
         cartDao.insertCart(cart);
 
-//        Navigation.findNavController(view).navigate(R.id.cartFragment);
+        Navigation.findNavController(view).navigate(R.id.cartFragment);
     }
 }

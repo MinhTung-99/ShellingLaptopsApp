@@ -21,6 +21,7 @@ import com.shellinglaptop.network.LaptopApi;
 import com.shellinglaptop.network.RetrofitInstance;
 import com.shellinglaptop.utils.ConstantUtils;
 import com.shellinglaptop.utils.ImageUtils;
+import com.shellinglaptop.utils.UserUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -62,32 +63,32 @@ public class UpdateOrAddLaptopAdminFragment extends Fragment {
         binding.btnUpdateOrAdd.setOnClickListener(v -> {
             setLaptop(laptop);
             if(laptop.getTypeUpdate() == ConstantUtils.Update){
-                laptopApi.updateLaptop(laptop, laptop.getLaptopId()).enqueue(new Callback<ResponseBody>() {
+                laptopApi.updateLaptop(laptop, laptop.getLaptopId(),UserUtils.userName, UserUtils.password).enqueue(new Callback<Boolean>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                         if(response.isSuccessful()){
-                            Log.d("KMFG", "OKEE=");
+                            Log.d("KMFG", "OKEE="+response.body());
                         }else{
                             Log.d("KMFG", "FAILED="+response.errorBody());
                         }
                     }
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<Boolean> call, Throwable t) {
                         Log.d("KMFG", "ERR="+t.getMessage());
                     }
                 });
             }else{
-                laptopApi.saveLaptop(laptop).enqueue(new Callback<Void>() {
+                laptopApi.saveLaptop(laptop, UserUtils.userName, UserUtils.password).enqueue(new Callback<Boolean>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
+                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                         if(response.isSuccessful()){
-                            Log.d("KMFG", "OKEE=");
+                            Log.d("KMFG", "OKEE="+response.body());
                         }else{
                             Log.d("KMFG", "FAILED="+response.errorBody());
                         }
                     }
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(Call<Boolean> call, Throwable t) {
                         Log.d("KMFG", "ERR="+t.getMessage());
                     }
                 });

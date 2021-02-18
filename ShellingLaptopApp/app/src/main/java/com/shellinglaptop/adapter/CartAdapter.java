@@ -47,7 +47,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         carts.get(position).setTotalMoneyStr(carts.get(position).getTotalMoney().toString());
         String setupTotalMoney = PriceUtils.setupPrice(carts.get(position).getTotalMoneyStr());
-
         carts.get(position).setTotalMoneyStr(setupTotalMoney +" VND");
         holder.itemCartBinding.setCart(carts.get(position));
 
