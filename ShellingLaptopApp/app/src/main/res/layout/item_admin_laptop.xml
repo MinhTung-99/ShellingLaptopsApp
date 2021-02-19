@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/img_admin_laptop"
+                android:id="@+id/img_admin_laptop1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 imageStr="@{laptop.image}"/>

@@ -11,7 +11,7 @@ public class Cart extends Laptop{
     private Long cartId;
 
     @ColumnInfo(name = "count")
-    private int count;
+    private Long count;
 
     @ColumnInfo(name = "totalMoney")
     private Long totalMoney;
@@ -26,11 +26,11 @@ public class Cart extends Laptop{
         this.cartId = cartId;
     }
 
-    public int getCount() {
+    public Long getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Long count) {
         this.count = count;
     }
 

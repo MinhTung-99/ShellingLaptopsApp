@@ -17,44 +17,38 @@ import com.shellinglaptop.model.Laptop;
 
 public class LaptopDetailViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> count;
-    private int _count = 1;
+    private MutableLiveData<Long> count;
+    private Long _count = 1L;
     private Laptop laptop;
     private Context context;
 
-    public MutableLiveData<Integer> getCount() {
+    public MutableLiveData<Long> getCount() {
         return count;
     }
-
     public void setLaptops(Laptop laptop) {
         this.laptop = laptop;
     }
-
     public void setContext(Context context) {
         this.context = context;
     }
-
     public LaptopDetailViewModel() {
         count = new MutableLiveData<>();
         count.postValue(_count);
     }
-
     public void txtIncreaseOnClick(View view){
         _count++;
         if(_count > 9){
-            _count = 9;
+            _count = 9L;
         }
         count.postValue(_count);
     }
-
     public void txtReductionOnClick(View view){
         _count--;
         if(_count < 1){
-            _count = 1;
+            _count = 1L;
         }
         count.postValue(_count);
     }
-
     public void btnAddCartOnClick(View view){
         CartDao cartDao = CartDatabase.getInstance(context).cartDao();
         Cart cart = new Cart();

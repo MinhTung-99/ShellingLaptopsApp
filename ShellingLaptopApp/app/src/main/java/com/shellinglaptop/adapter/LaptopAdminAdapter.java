@@ -12,16 +12,19 @@ import com.shellinglaptop.databinding.ItemAdminLaptopBinding;
 import com.shellinglaptop.model.Laptop;
 import com.shellinglaptop.utils.ClickUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LaptopAdminAdapter extends RecyclerView.Adapter<LaptopAdminAdapter.LaptopAdminViewHolder>{
 
     private List<Laptop> laptops;
+    private List<Laptop> laptopArr;
     private ClickUtils.IRecyclerViewClickListener recyclerViewClickListener;
 
     public LaptopAdminAdapter(List<Laptop> laptops, ClickUtils.IRecyclerViewClickListener recyclerViewClickListener) {
         this.laptops = laptops;
         this.recyclerViewClickListener = recyclerViewClickListener;
+        laptopArr = new ArrayList<>();
     }
 
     @NonNull
@@ -61,5 +64,11 @@ public class LaptopAdminAdapter extends RecyclerView.Adapter<LaptopAdminAdapter.
             this.itemAdminLaptopBinding = itemAdminLaptopBinding;
             this.recyclerViewClickListener = recyclerViewClickListener;
         }
+    }
+
+    public void setLaptops(List<Laptop> laptops){
+        this.laptops = laptops;
+        laptopArr.addAll(laptops);
+        notifyDataSetChanged();
     }
 }

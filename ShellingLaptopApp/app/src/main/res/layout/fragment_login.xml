@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.shellinglaptop.viewmodel.LoginViewModel" />
+        <variable
+            name="user"
+            type="com.shellinglaptop.model.User" />
+    </data>
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -17,19 +27,25 @@
             android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:afterTextChanged="@{viewmodel :: setUserName}"
+            android:text="@{user.userName}"
             android:hint="Tên đăng nhập"/>
 
         <EditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:afterTextChanged="@{viewmodel :: setPassword}"
+            android:text="@{user.password}"
+            android:inputType="textPassword"
             android:hint="password"/>
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng nhập"/>
+            android:text="Đăng nhập"
+            android:onClick="@{viewmodel :: login}"/>
 
     </LinearLayout>
 </layout>

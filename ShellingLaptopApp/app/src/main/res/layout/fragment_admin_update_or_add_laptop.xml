@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.shellinglaptop.viewmodel.LaptopViewModel" />
+
+        <variable
+            name="laptop"
+            type="com.shellinglaptop.model.Laptop" />
+    </data>
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -9,29 +19,39 @@
         <ImageView
             android:id="@+id/img_admin_laptop"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"
+            imageStr="@{laptop.image}"/>
 
         <EditText
             android:id="@+id/edt_name"
             android:hint="Name"
+            android:afterTextChanged="@{viewmodel::setName}"
+            android:text="@{laptop.name}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/edt_sale"
             android:hint="Sale"
+            android:afterTextChanged="@{viewmodel::setSale}"
+            android:text="@{laptop.sale}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/edt_price"
             android:hint="price"
+            android:afterTextChanged="@{viewmodel::setPrice}"
+            android:text="@{laptop.price.toString()}"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/edt_description"
             android:hint="description"
+            android:afterTextChanged="@{viewmodel::setDescription}"
+            android:text="@{laptop.description}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -40,6 +60,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="UPDATE"/>
+            android:onClick="@{viewmodel :: updateOrAdd}"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:theme="@style/Theme.ShellingLaptopApp.WhiteAccent"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </layout>

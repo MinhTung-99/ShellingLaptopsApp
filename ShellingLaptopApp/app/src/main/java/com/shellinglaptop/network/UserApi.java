@@ -9,5 +9,5 @@ import retrofit2.http.POST;
 public interface UserApi {
 
     @POST("login")
-    Call<String> login(@Body User user);
+    Call<User> login(@Body User user);
 }

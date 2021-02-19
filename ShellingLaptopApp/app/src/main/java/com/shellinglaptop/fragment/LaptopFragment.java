@@ -48,7 +48,6 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
 
         sharedPreferences = getContext().getSharedPreferences(UserUtils.MY_PREFERENCES, Context.MODE_PRIVATE);
         if(sharedPreferences.contains(UserUtils.USER_NAME)){
-            Log.d("KMFG", "OKEE"+sharedPreferences.getString(UserUtils.USER_NAME, "FAILED"));
             String username = sharedPreferences.getString(UserUtils.USER_NAME, "FAILED");
             binding.txtUsername.setText("Xin chào " + username);
             binding.txtUsername.setVisibility(View.VISIBLE);
@@ -57,21 +56,21 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
             binding.txtUsername.setVisibility(View.GONE);
             binding.imgLogin.setImageResource(R.drawable.ic_login);
         }
-
         viewGone();
         setAdapter();
-
         binding.imgLogin.setOnClickListener(v->{
             if(sharedPreferences.contains(UserUtils.USER_NAME)){
-                sharedPreferences.edit().remove(UserUtils.USER_NAME).commit();
-                sharedPreferences.edit().remove(UserUtils.PASSWORD).commit();
+                removeSharedPreferences(UserUtils.USER_ID);
+                removeSharedPreferences(UserUtils.FULL_NAME);
+                removeSharedPreferences(UserUtils.PHONE_NUMBER);
+                removeSharedPreferences(UserUtils.USER_NAME);
+                removeSharedPreferences(UserUtils.PASSWORD);
                 binding.txtUsername.setVisibility(View.GONE);
                 binding.imgLogin.setImageResource(R.drawable.ic_login);
             }else{
                 NavHostFragment.findNavController(this).navigate(R.id.loginFragment);
             }
         });
-
         viewModel = new ViewModelProvider(this).get(LaptopViewModel.class);
         binding.setViewmodel(viewModel);
         viewModel.laptopApiCall();
@@ -84,7 +83,6 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
                 Toast.makeText(getContext(),"NULL", Toast.LENGTH_SHORT).show();
             }
         });
-
         binding.searchLaptop.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,7 +96,9 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
             }
         });
     }
-
+    private void removeSharedPreferences(String type){
+        sharedPreferences.edit().remove(type).commit();
+    }
     private void setAdapter() {
         laptops = new ArrayList<>();
         binding.rvLaptop.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -106,17 +106,14 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
         adapter.setRecyclerViewLaptopClickListener(this);
         binding.rvLaptop.setAdapter(adapter);
     }
-
     private void viewVisible(){
         binding.searchLaptop.setVisibility(View.VISIBLE);
         binding.imgCart.setVisibility(View.VISIBLE);
     }
-
     private void viewGone(){
         binding.searchLaptop.setVisibility(View.GONE);
         binding.imgCart.setVisibility(View.GONE);
     }
-
     @Override
     public void RecyclerViewLaptopItemClick(Laptop laptop) {
         Bundle bundle = new Bundle();

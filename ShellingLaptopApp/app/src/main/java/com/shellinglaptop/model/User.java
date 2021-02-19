@@ -9,7 +9,7 @@ import java.util.List;
 
 public class User {
 
-    @SerializedName("userid")
+    @SerializedName("userId")
     @Expose
     private Long userId;
 

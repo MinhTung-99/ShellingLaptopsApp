@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.shellinglaptop.R;
@@ -21,6 +22,8 @@ import com.shellinglaptop.network.LaptopApi;
 import com.shellinglaptop.network.RetrofitInstance;
 import com.shellinglaptop.network.UserApi;
 import com.shellinglaptop.utils.UserUtils;
+import com.shellinglaptop.viewmodel.LaptopViewModel;
+import com.shellinglaptop.viewmodel.LoginViewModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +32,7 @@ import retrofit2.Response;
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
-    private SharedPreferences sharedPreferences;
+    private LoginViewModel viewModel;
 
     @Nullable
     @Override
@@ -42,38 +45,8 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnLogin.setOnClickListener(v->{
-            User user = new User();
-            user.setUserName(binding.edtUsername.getText().toString());
-            user.setPassword(binding.edtPassword.getText().toString());
-            UserApi userApi = RetrofitInstance.getRetrofitClient().create(UserApi.class);
-            userApi.login(user).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if(response.isSuccessful()){
-                        Log.d("KMFG", "OKEE"+response.body());
-                        if(response.body().equals(UserUtils.ADMIN)){
-                            UserUtils.userName = user.getUserName();
-                            UserUtils.password = user.getPassword();
-                            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.laptopAdminFragment);
-                        }else if(response.body().equals(UserUtils.USER)){
-                            sharedPreferences = getContext().getSharedPreferences(UserUtils.MY_PREFERENCES, Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString(UserUtils.USER_NAME, user.getUserName());
-                            editor.putString(UserUtils.PASSWORD, user.getPassword());
-                            editor.commit();
-                            NavHostFragment.findNavController(LoginFragment.this).popBackStack();
-                        }
-                    }else{
-                        Log.d("KMFG", "FAILED="+response.errorBody());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Log.d("KMFG", "ERR="+t.getMessage());
-                }
-            });
-        });
+        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        binding.setViewmodel(viewModel);
+        viewModel.setContext(requireContext());
     }
 }

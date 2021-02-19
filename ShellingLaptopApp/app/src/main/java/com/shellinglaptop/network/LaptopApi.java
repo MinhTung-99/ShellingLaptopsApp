@@ -27,5 +27,5 @@ public interface LaptopApi {
     @PUT("api-update-laptop/{laptopId}/{userName}/{password}")
     Call<Boolean> updateLaptop(@Body Laptop laptop, @Path("laptopId") Long laptopid,@Path("userName") String userName, @Path("password") String password);
     @HTTP(method = "DELETE", path = "delete/{userName}/{password}", hasBody = true)
-    Call<Void> deleteLaptop(@Body Laptop laptop, @Path("userName") String userName, @Path("password") String password);
+    Call<Boolean> deleteLaptop(@Body Laptop laptop, @Path("userName") String userName, @Path("password") String password);
 }

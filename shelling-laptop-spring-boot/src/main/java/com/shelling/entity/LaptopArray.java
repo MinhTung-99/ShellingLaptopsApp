@@ -1,8 +1,6 @@
-package com.shelling.repository;
+package com.shelling.entity;
 
 import java.util.List;
-
-import com.shelling.entity.Laptop;
 
 public class LaptopArray {
 	private List<Laptop> laptops;

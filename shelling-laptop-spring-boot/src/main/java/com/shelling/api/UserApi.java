@@ -25,7 +25,7 @@ public class UserApi {
 	}
 	
 	@PostMapping(value = "/login")
-	public String login(@RequestBody User user) {
+	public User login(@RequestBody User user) {
 		
 		System.out.println(user.getUserName() + "===" +user.getPassword());
 		

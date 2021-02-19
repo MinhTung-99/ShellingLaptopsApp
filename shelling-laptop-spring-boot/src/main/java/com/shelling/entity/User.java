@@ -1,15 +1,12 @@
 package com.shelling.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,27 +17,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userid")
 	private Long userId;
-	
 	@Column(name = "username")
 	private String userName;
-	
 	@Column
 	private String password;
-	
 	@Column(name = "fullname")
 	private String fullName;
-	
 	@Column(name = "phonenumber")
 	private Integer phoneNumber;
-	
 	@Column(name = "createddate")
 	private Date createdDate;
-	
 	@Column(name = "typeuser")
 	private String typeUser;
-	
-	@OneToMany(mappedBy = "user")
-	private List<Order> orders = new ArrayList<Order>();
 	
 	public Long getUserId() {
 		return userId;
@@ -77,12 +65,6 @@ public class User {
 	}
 	public void setTypeUser(String typeUser) {
 		this.typeUser = typeUser;
-	}
-	public List<Order> getOrders() {
-		return orders;
-	}
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;

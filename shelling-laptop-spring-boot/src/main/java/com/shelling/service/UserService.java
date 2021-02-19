@@ -18,14 +18,14 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public String login(User user) {
+	public User login(User user) {
 		List<User> users = userRepository.findAll();
 		for(User data: users) {
 			if(user.getUserName().equals(data.getUserName()) 
 					&& user.getPassword().equals(data.getPassword())) {
-				return data.getTypeUser();
+				return data;
 			}
 		}
-		return "FAILED";
+		return null;
 	}
 }

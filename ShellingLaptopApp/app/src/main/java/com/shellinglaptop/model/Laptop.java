@@ -19,33 +19,26 @@ public class Laptop implements Serializable {
     @SerializedName("laptopId")
     @Expose
     private Long laptopId;
-
     @SerializedName("name")
     @Expose
     @ColumnInfo(name = "name")
     private String name;
-
     @SerializedName("image")
     @Expose
     @ColumnInfo(name = "image")
     private String image;
-
     @SerializedName("price")
     @Expose
     @ColumnInfo(name = "price")
     private Long price;
-
     @SerializedName("sale")
     @Expose
     private String sale;
-
     @SerializedName("description")
     @Expose
     private String description;
 
     private String typeUpdate;
-
-    @ColumnInfo(name = "priceStr")
     private String priceStr;
 
     public Long getLaptopId() {

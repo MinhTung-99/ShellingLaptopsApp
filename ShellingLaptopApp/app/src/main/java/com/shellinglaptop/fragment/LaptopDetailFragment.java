@@ -35,7 +35,6 @@ public class LaptopDetailFragment extends Fragment {
 
         Laptop laptop = (Laptop) getArguments().getSerializable("laptop");
         binding.setLaptop(laptop);
-
         viewModel = new ViewModelProvider(this).get(LaptopDetailViewModel.class);
         binding.setViewModel(viewModel);
         viewModel.setLaptops(laptop);

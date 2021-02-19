@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,17 +15,14 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orderid")
 	private Long orderId;
-	
-	@ManyToOne
-	@JoinColumn(name = "laptopid")
-	private Laptop laptop;
-	
-	@ManyToOne
-	@JoinColumn(name = "userid")
-	private User user;
-
+	@Column(name = "laptopid")
+	private Long laptopId;
+	@Column(name = "userid")
+	private Long userId;
 	@Column
 	private Long count;
+	@Column(name = "totalmoney")
+	private String totalMoney;
 
 	public Long getOrderId() {
 		return orderId;
@@ -35,30 +30,28 @@ public class Order {
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
-	public Laptop getLaptop() {
-		return laptop;
-	}
-	public void setLaptop(Laptop laptop) {
-		this.laptop = laptop;
-	}
 	public Long getCount() {
 		return count;
 	}
 	public void setCount(Long count) {
 		this.count = count;
 	}
-	public User getUser() {
-		return user;
+	public String getTotalMoney() {
+		return totalMoney;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setTotalMoney(String totalMoney) {
+		this.totalMoney = totalMoney;
 	}
-
-//	public Long getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(Long userId) {
-//		this.userId = userId;
-//	}
+	public Long getLaptopId() {
+		return laptopId;
+	}
+	public void setLaptopId(Long laptopId) {
+		this.laptopId = laptopId;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 }
