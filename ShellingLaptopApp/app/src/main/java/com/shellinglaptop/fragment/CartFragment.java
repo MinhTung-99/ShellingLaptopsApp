@@ -97,6 +97,7 @@ public class CartFragment extends Fragment implements CartAdapter.ButtonOnClickL
 
     @Override
     public void btnOrderOnClick(Cart cart) {
+        Log.d("KMFG", "CLICKED");
         if(UserUtils.userName == null && UserUtils.password == null){
             NavHostFragment.findNavController(this).navigate(R.id.loginFragment);
         }else{

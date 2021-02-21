@@ -74,7 +74,6 @@ public class LaptopAdminFragment extends Fragment implements ClickUtils.IRecycle
     public void btnDeleteItemClick(Laptop laptop) {
        viewModel.deleteLaptopApiCall(laptop);
     }
-
     @Override
     public void onDetach() {
         super.onDetach();

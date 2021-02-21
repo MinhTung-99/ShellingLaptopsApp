@@ -59,9 +59,9 @@ public class LoginViewModel extends ViewModel {
                 if(response.isSuccessful()){
                     if(response.body() != null){
                         isProgressBar.postValue(false);
+                        UserUtils.userName = userLogin.getUserName();
+                        UserUtils.password = userLogin.getPassword();
                         if(response.body().getTypeUser().equals(UserUtils.ADMIN)){
-                            UserUtils.userName = userLogin.getUserName();
-                            UserUtils.password = userLogin.getPassword();
                             Navigation.findNavController(view).navigate(R.id.laptopAdminFragment);
                         }else if(response.body().getTypeUser().equals(UserUtils.USER)){
                             saveSharedPreferences(response);

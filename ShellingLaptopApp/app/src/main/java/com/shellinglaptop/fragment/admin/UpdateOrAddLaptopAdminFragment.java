@@ -66,7 +66,8 @@ public class UpdateOrAddLaptopAdminFragment extends Fragment {
             CropImage.activity()
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1,1)
-                    .setMaxCropResultSize(500,500)
+                    .setMinCropResultSize(500,500)
+                    .setMaxCropResultSize(1000,1000)
                     .start(getContext(), this);
         });
         viewModel.getIsUpdateOrAdd().observe(getViewLifecycleOwner(), isUpdateOrAdd->{

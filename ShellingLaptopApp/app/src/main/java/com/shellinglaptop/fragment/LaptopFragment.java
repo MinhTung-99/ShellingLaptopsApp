@@ -52,7 +52,8 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
         if(sharedPreferences.contains(UserUtils.USER_NAME)){
             UserUtils.userName = sharedPreferences.getString(UserUtils.USER_NAME, null);
             UserUtils.password = sharedPreferences.getString(UserUtils.PASSWORD, null);
-            binding.txtUsername.setText("Xin chào " + UserUtils.userName);
+            String fullName = sharedPreferences.getString(UserUtils.FULL_NAME, null);;
+            binding.txtUsername.setText("Xin chào " + fullName);
             binding.txtUsername.setVisibility(View.VISIBLE);
             binding.imgLogin.setImageResource(R.drawable.ic_logout);
         }else {
