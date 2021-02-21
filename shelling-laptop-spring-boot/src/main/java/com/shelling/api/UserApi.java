@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,12 +21,12 @@ public class UserApi {
 	public List<User> getLogins() {
 		return service.getLogins();
 	}
-	
 	@PostMapping(value = "/login")
 	public User login(@RequestBody User user) {
-		
-		System.out.println(user.getUserName() + "===" +user.getPassword());
-		
 		return service.login(user);
+	}
+	@PostMapping(value = "/register")
+	public boolean register(@RequestBody User user) {
+		return service.saveUser(user);
 	}
 }

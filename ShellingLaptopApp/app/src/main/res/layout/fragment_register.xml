@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.shellinglaptop.viewmodel.RegisterViewModel" />
+        <variable
+            name="user"
+            type="com.shellinglaptop.model.User" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:theme="@style/Theme.ShellingLaptopApp.WhiteAccent"
+            android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_laptop"
+                android:layout_gravity="center"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewmodel :: setUserName}"
+                android:text="@{user.userName}"
+                android:hint="Tên đăng nhập"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="#778899"
+                android:textCursorDrawable="@drawable/color_cursor"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewmodel :: setPassword}"
+                android:text="@{user.password}"
+                android:inputType="textPassword"
+                android:hint="password"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="#778899"
+                android:textCursorDrawable="@drawable/color_cursor"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewmodel :: setFullName}"
+                android:text="@{user.fullName}"
+                android:hint="Họ và tên"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="#778899"
+                android:textCursorDrawable="@drawable/color_cursor"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewmodel :: setPhoneNumber}"
+                android:text="@{user.phoneNumber.toString()}"
+                android:hint="số điện thoại"
+                android:inputType="phone"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="#778899"
+                android:textCursorDrawable="@drawable/color_cursor"/>
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký"
+                android:enabled="false"
+                android:background="@drawable/custom_button"
+                android:layout_marginHorizontal="10dp"
+                android:onClick="@{viewmodel :: btnRegister}"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

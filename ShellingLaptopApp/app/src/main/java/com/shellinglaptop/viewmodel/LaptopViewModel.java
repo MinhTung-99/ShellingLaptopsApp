@@ -33,28 +33,28 @@ public class LaptopViewModel extends ViewModel {
 
     private MutableLiveData<List<Laptop>> laptops;
     private MutableLiveData<Boolean> isUpdateOrAdd;
+    private MutableLiveData<Boolean> isDelete;
     private Laptop laptop;
     private LaptopApi laptopApi;
     private Context context;
-    private String strImageDefault;
 
-    public void setStrImageDefault(String strImageDefault) {
-        this.strImageDefault = strImageDefault;
-    }
     public void setContext(Context context) {
         this.context = context;
     }
     public LaptopViewModel() {
         laptops = new MutableLiveData<>();
         isUpdateOrAdd = new MutableLiveData<>();
+        isDelete = new MutableLiveData<>();
         laptopApi = RetrofitInstance.getRetrofitClient().create(LaptopApi.class);
     }
-
     public MutableLiveData<List<Laptop>> getLaptops() {
         return laptops;
     }
     public MutableLiveData<Boolean> getIsUpdateOrAdd() {
         return isUpdateOrAdd;
+    }
+    public MutableLiveData<Boolean> getIsDelete() {
+        return isDelete;
     }
     public void setLaptop(Laptop laptop) {
         this.laptop = laptop;
@@ -66,8 +66,6 @@ public class LaptopViewModel extends ViewModel {
         Bundle bundle = new Bundle();
         Laptop laptop = new Laptop();
         laptop.setTypeUpdate(ConstantUtils.ADD);
-
-        laptop.setImage(strImageDefault);
         bundle.putSerializable("laptop", laptop);
         Navigation.findNavController(view).navigate(R.id.updateOrAddLaptopAdminFragment, bundle);
     }
@@ -77,7 +75,7 @@ public class LaptopViewModel extends ViewModel {
         if(laptop.getTypeUpdate() == ConstantUtils.Update){
             updateLaptopApiCall(view);
         }else{
-           saveLaptopApiCall();
+           saveLaptopApiCall(view);
         }
     }
     public void setName(Editable editable){
@@ -97,6 +95,8 @@ public class LaptopViewModel extends ViewModel {
         laptop.setDescription(editable.toString());
     }
     public void laptopApiCall(){
+        if(laptops.getValue() != null)
+            laptops.getValue().clear();
         laptopApi.getLaptops().enqueue(new Callback<LaptopList>() {
             @Override
             public void onResponse(Call<LaptopList> call, Response<LaptopList> response) {
@@ -112,11 +112,13 @@ public class LaptopViewModel extends ViewModel {
         });
     }
     public void deleteLaptopApiCall(Laptop laptop){
+        isDelete.postValue(true);
         laptopApi.deleteLaptop(laptop, UserUtils.userName, UserUtils.password).enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 if(response.isSuccessful()){
                     if(response.body()){
+                        isDelete.postValue(false);
                         laptopApiCall();
                     }
                 }else{
@@ -129,12 +131,15 @@ public class LaptopViewModel extends ViewModel {
             }
         });
     }
-    private void saveLaptopApiCall(){
+    private void saveLaptopApiCall(View view){
         laptopApi.saveLaptop(laptop, UserUtils.userName, UserUtils.password).enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 if(response.isSuccessful()){
-                    Log.d("KMFG", "OKEE="+response.body());
+                    if(response.body()){
+                        isUpdateOrAdd.postValue(true);
+                        Navigation.findNavController(view).popBackStack();
+                    }
                 }else{
                     Log.d("KMFG", "FAILED="+response.errorBody());
                 }

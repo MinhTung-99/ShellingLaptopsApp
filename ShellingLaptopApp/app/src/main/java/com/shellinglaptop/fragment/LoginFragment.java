@@ -48,5 +48,15 @@ public class LoginFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         binding.setViewmodel(viewModel);
         viewModel.setContext(requireContext());
+        viewModel.getIsProgressBar().observe(getViewLifecycleOwner(), isProgressbar->{
+            if(isProgressbar){
+                binding.progressBar.setVisibility(View.VISIBLE);
+            }else{
+                binding.progressBar.setVisibility(View.GONE);
+            }
+        });
+        viewModel.getIsEnoughEditText().observe(getViewLifecycleOwner(), isEnoughEditText->{
+            binding.btnLogin.setEnabled(isEnoughEditText);
+        });
     }
 }

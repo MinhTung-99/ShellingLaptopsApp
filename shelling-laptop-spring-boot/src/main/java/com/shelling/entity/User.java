@@ -1,7 +1,5 @@
 package com.shelling.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +22,7 @@ public class User {
 	@Column(name = "fullname")
 	private String fullName;
 	@Column(name = "phonenumber")
-	private Integer phoneNumber;
-	@Column(name = "createddate")
-	private Date createdDate;
+	private String phoneNumber;
 	@Column(name = "typeuser")
 	private String typeUser;
 	
@@ -54,22 +50,16 @@ public class User {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
 	public String getTypeUser() {
 		return typeUser;
 	}
 	public void setTypeUser(String typeUser) {
 		this.typeUser = typeUser;
 	}
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

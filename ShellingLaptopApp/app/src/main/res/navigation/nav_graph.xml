@@ -52,9 +52,16 @@
         <action
             android:id="@+id/action_loginFragment2_to_laptopFragment"
             app:destination="@id/laptopFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateOrAddLaptopAdminFragment"
         android:name="com.shellinglaptop.fragment.admin.UpdateOrAddLaptopAdminFragment"
         android:label="UpdateOrAddLaptopAdminFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.shellinglaptop.fragment.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

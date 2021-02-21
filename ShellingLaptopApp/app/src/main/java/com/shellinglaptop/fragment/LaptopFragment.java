@@ -1,6 +1,7 @@
 package com.shellinglaptop.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.shellinglaptop.R;
+import com.shellinglaptop.SplashActivity;
 import com.shellinglaptop.adapter.LaptopAdapter;
 import com.shellinglaptop.databinding.FragmentLaptopBinding;
 import com.shellinglaptop.model.Laptop;
@@ -48,8 +50,9 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
 
         sharedPreferences = getContext().getSharedPreferences(UserUtils.MY_PREFERENCES, Context.MODE_PRIVATE);
         if(sharedPreferences.contains(UserUtils.USER_NAME)){
-            String username = sharedPreferences.getString(UserUtils.USER_NAME, "FAILED");
-            binding.txtUsername.setText("Xin chào " + username);
+            UserUtils.userName = sharedPreferences.getString(UserUtils.USER_NAME, null);
+            UserUtils.password = sharedPreferences.getString(UserUtils.PASSWORD, null);
+            binding.txtUsername.setText("Xin chào " + UserUtils.userName);
             binding.txtUsername.setVisibility(View.VISIBLE);
             binding.imgLogin.setImageResource(R.drawable.ic_logout);
         }else {
@@ -65,6 +68,8 @@ public class LaptopFragment extends Fragment implements LaptopAdapter.RecyclerVi
                 removeSharedPreferences(UserUtils.PHONE_NUMBER);
                 removeSharedPreferences(UserUtils.USER_NAME);
                 removeSharedPreferences(UserUtils.PASSWORD);
+                UserUtils.userName = null;
+                UserUtils.password = null;
                 binding.txtUsername.setVisibility(View.GONE);
                 binding.imgLogin.setImageResource(R.drawable.ic_login);
             }else{

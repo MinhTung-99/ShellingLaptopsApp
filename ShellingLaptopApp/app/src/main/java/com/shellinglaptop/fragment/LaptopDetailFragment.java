@@ -28,18 +28,15 @@ public class LaptopDetailFragment extends Fragment {
         binding = FragmentDetailLaptopBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Laptop laptop = (Laptop) getArguments().getSerializable("laptop");
         binding.setLaptop(laptop);
         viewModel = new ViewModelProvider(this).get(LaptopDetailViewModel.class);
         binding.setViewModel(viewModel);
         viewModel.setLaptops(laptop);
         viewModel.setContext(getContext());
-
         viewModel.getCount().observe(getViewLifecycleOwner(), count -> {
             binding.txtCount.setText(count.toString());
         });

@@ -72,8 +72,6 @@ public class CartViewModel extends ViewModel {
 
         if(sharedPreferences.contains(UserUtils.USER_NAME)){
             Long userId = sharedPreferences.getLong(UserUtils.USER_ID, -1);
-            UserUtils.userName = sharedPreferences.getString(UserUtils.USER_NAME, "FAILED");
-            UserUtils.password = sharedPreferences.getString(UserUtils.PASSWORD, "FAILED");
             order.setUserId(userId);
         }
 

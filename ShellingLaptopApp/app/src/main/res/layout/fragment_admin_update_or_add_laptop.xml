@@ -28,7 +28,9 @@
             android:afterTextChanged="@{viewmodel::setName}"
             android:text="@{laptop.name}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#778899"
+            android:textCursorDrawable="@drawable/color_cursor"/>
 
         <EditText
             android:id="@+id/edt_sale"
@@ -36,7 +38,9 @@
             android:afterTextChanged="@{viewmodel::setSale}"
             android:text="@{laptop.sale}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#778899"
+            android:textCursorDrawable="@drawable/color_cursor"/>
 
         <EditText
             android:id="@+id/edt_price"
@@ -45,7 +49,9 @@
             android:text="@{laptop.price.toString()}"
             android:layout_width="match_parent"
             android:inputType="number"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#778899"
+            android:textCursorDrawable="@drawable/color_cursor"/>
 
         <EditText
             android:id="@+id/edt_description"
@@ -53,14 +59,17 @@
             android:afterTextChanged="@{viewmodel::setDescription}"
             android:text="@{laptop.description}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#778899"
+            android:textCursorDrawable="@drawable/color_cursor"/>
 
         <Button
             android:id="@+id/btn_update_or_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:onClick="@{viewmodel :: updateOrAdd}"/>
+            android:onClick="@{viewmodel :: updateOrAdd}"
+            android:background="@drawable/custom_button"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

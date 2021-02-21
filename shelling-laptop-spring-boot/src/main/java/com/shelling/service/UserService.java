@@ -17,15 +17,19 @@ public class UserService {
 	public List<User> getLogins(){
 		return userRepository.findAll();
 	}
-	
 	public User login(User user) {
 		List<User> users = userRepository.findAll();
 		for(User data: users) {
 			if(user.getUserName().equals(data.getUserName()) 
 					&& user.getPassword().equals(data.getPassword())) {
 				return data;
+			}else {
+				user.setTypeUser("NULL");
 			}
 		}
-		return null;
+		return user;
+	}
+	public boolean saveUser(User user) {
+		return userRepository.save(user) != null;
 	}
 }
